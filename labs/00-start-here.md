@@ -121,6 +121,7 @@ Check your RAM:
 - **landscape-server**: the Landscape Server you'll install in Lab 03.
 - **web-01, db-01**: modern machines that pretend to be a web server and a database server.
 - **legacy-01**: an older Ubuntu release. Every real customer has a few of these, and they make the best security demo.
+- **airgap-01** (added in ⭐ [Lab 11](11-sovereign-airgapped-and-repos.md)): a machine with **no Internet access** that Landscape still manages and feeds with approved software from your own signed mirror. It's the centrepiece of the sovereignty demo.
 
 ## ❓ Check yourself
 

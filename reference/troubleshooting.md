@@ -75,6 +75,48 @@ If you re-registered a machine, it may appear twice. Remove the stale one (**Ins
 - `pro enable usg` fails → Pro isn't attached on that machine.
 - Audit "missing" → scheduled runs can start later than the selected time, and the time is **UTC**.
 
+## Lab 11: airgap and mirroring
+
+**Locked out of airgap-01 (`multipass shell` hangs)**
+The firewall is probably blocking SSH. It's a lab VM: `multipass delete airgap-01 --purge`, then redo Lab 11, Part E, and make sure `sudo ufw allow in 22/tcp` runs **before** `sudo ufw --force enable`.
+
+**airgap-01 loses its IP address after a while**
+Check the DHCP rule exists: `multipass exec airgap-01 -- sudo ufw status` should list `67/udp ALLOW OUT`. Add it with `sudo ufw allow out 67/udp`.
+
+**Offline install says a dependency is missing**
+The staging VM may have had a newer package already installed, so it didn't download it. On `staging`, download the missing package by name (`apt-get download <PACKAGE>` downloads one package without installing it), add it to the bundle, recompute `SHA256SUMS`, and carry it across again. Then rerun the offline install command.
+
+**`landscape-debarchive` isn't active**
+Run `sudo snap logs landscape-debarchive -n 50`. Usually it's a wrong database password: rerun the `snap set … deb.archive.database.password=…` command from Part G3.
+
+**`curl …/debarchive/v1/mirrors` returns something other than 401**
+- `404` or the Landscape page: the `RewriteRule` lines are missing or **after** the catch-all rule. Move them above it, then `sudo apache2ctl configtest && sudo systemctl reload apache2`.
+- `502`/`503`: Apache can't reach Debarchive. Test it directly with `curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8100/v1/mirrors`.
+
+**Mirror sync fails**
+- The **server** needs Internet access to the Ubuntu archive (it's the controlled-egress side). Test with `multipass exec landscape-server -- curl -sI http://archive.ubuntu.com/ubuntu/`.
+- On **Apple Silicon** (arm64), the Source URL must be `http://ports.ubuntu.com/ubuntu-ports` and the architecture `arm64`.
+- If the *Ubuntu archive* source type won't accept the ports URL, create the mirror as a **third-party** Debian repository with the same URL, and paste Ubuntu's archive signing key into **Verification GPG key**. To print that key as text, on any Ubuntu machine:
+
+  ```bash
+  gpg --no-default-keyring --keyring /usr/share/keyrings/ubuntu-archive-keyring.gpg --export --armor
+  ```
+
+  *What this does:* reads Ubuntu's official archive keyring file and prints its public keys in text ("armored") form.
+
+**`http://<SERVER_IP>:8000/` shows 403 Forbidden or "Not Found"**
+- Not Found: check that the publish finished and that the `DocumentRoot` path matches the publication target path (`/var/snap/landscape-debarchive/common/publications/approved-noble`).
+- 403: Apache can't read the directory. Check with `sudo ls -ld /var/snap/landscape-debarchive/common/publications/approved-noble`. The docs also describe moving the published root to a directory you serve (e.g. `/srv/published-repos`) with `sudo snap set landscape-debarchive deb.archive.filesystem-published-root=…`.
+
+**`apt update` on airgap-01 shows `NO_PUBKEY` or signature errors**
+The repository profile's **GPG key** field must contain the **public** key that matches the **private** key in the publication. Fix the profile (or the publication) and republish. Never paste the private key into a repository profile.
+
+**The repository profile never reaches airgap-01**
+Check airgap-01 has the tag `airgapped` and is in the profile's access group, then look for the repository profile activity in **Activities**.
+
+**`hello` doesn't appear in airgap-01's Packages tab**
+The client must refresh its package lists and report them first. Wait a few minutes, or run `multipass exec airgap-01 -- sudo apt update` and wait for the next report.
+
 ## Security upgrades don't show up
 
 - The client reports package state periodically. Wait a few minutes after any change.

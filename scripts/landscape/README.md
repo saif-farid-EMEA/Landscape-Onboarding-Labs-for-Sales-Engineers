@@ -11,6 +11,7 @@ Every line is commented. **Read the script before you paste it.** If you can't e
 | [`03-set-annotations.sh`](03-set-annotations.sh) | Lab 07, Part C | `root` | Writes two annotation files |
 | [`04-pro-fix-cve.sh`](04-pro-fix-cve.sh) | Lab 07, Part D | `root` | Upgrades only the packages needed to fix one CVE |
 | [`05-prepare-usg.sh`](05-prepare-usg.sh) | Lab 09, Part A | `root` | Enables USG and installs the `usg` package |
+| [`06-prove-airgap.sh`](06-prove-airgap.sh) | Lab 11, Part J4 | `ubuntu` | **No** (read-only "prove the airgap" report, safe for live demos) |
 
 ## Tips
 

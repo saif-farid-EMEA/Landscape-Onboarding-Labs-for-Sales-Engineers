@@ -6,12 +6,12 @@ This page shows, for every course-level **learning outcome**, which lab objectiv
 
 | ID | Outcome | Description | Lab objectives |
 |---|---|---|---|
-| PO1 | **Linux fluency** | Use an Ubuntu terminal for basic tasks and explain the Linux concepts that come up on calls: packages and repositories, `sudo`, services, the kernel, CVEs and USNs. | 12 |
+| PO1 | **Linux fluency** | Use an Ubuntu terminal for basic tasks and explain the Linux concepts that come up on calls: packages and repositories, `sudo`, services, the kernel, CVEs and USNs. | 13 |
 | PO2 | **Positioning** | Explain what Landscape is, how it works, its three editions and how it's licensed through Ubuntu Pro, and recommend an edition from a customer's requirements. | 12 |
-| PO3 | **Build** | Deploy a self-hosted Landscape demo environment and enroll machines with both manual and automated registration. | 10 |
-| PO4 | **Demonstrate core capabilities** | Demonstrate inventory and search, security patching and Livepatch, remote scripts, package and profile policy, CIS/DISA-STIG compliance and RBAC in the web portal, and explain the value of each. | 34 |
-| PO5 | **Specialized environments** | Explain sovereign and airgapped architectures, repository mirroring, and how Landscape covers desktops, WSL, IoT devices and AI hardware. | 10 |
-| PO6 | **Sell** | Run discovery, deliver a tailored 20-minute demo, recover from demo failures and handle common objections accurately. | 16 |
+| PO3 | **Build** | Deploy a self-hosted Landscape demo environment and enroll machines with both manual and automated registration. | 12 |
+| PO4 | **Demonstrate core capabilities** | Demonstrate inventory and search, security patching and Livepatch, remote scripts, package and profile policy, CIS/DISA-STIG compliance and RBAC in the web portal, and explain the value of each. | 35 |
+| PO5 | **Specialized environments** | Explain sovereign and airgapped architectures, repository mirroring, and how Landscape covers desktops, WSL, IoT devices and AI hardware. | 16 |
+| PO6 | **Sell** | Run discovery, deliver a tailored 20-minute demo, recover from demo failures and handle common objections accurately. | 18 |
 | PO7 | **Self-sufficiency** | Find answers in the official documentation, troubleshoot common problems and keep a demo environment healthy. | 7 |
 
 ## Outcome → lab objectives
@@ -32,6 +32,7 @@ This page shows, for every course-level **learning outcome**, which lab objectiv
 | **L04-6** **Diagnose** a failed registration using the client's configuration file and logs. | [Lab 04: Enroll your fleet](../labs/04-enroll-your-fleet.md) | Check yourself Q6 |
 | **L06-2** **Interpret** a USN (the CVEs it fixes, priority, affected releases) and **explain** where Landscape's security data comes from. | [Lab 06: Security patching, CVEs and Livepatch](../labs/06-security-patching-and-cves.md) | Checkpoint, Part A · Check yourself Q1, Q6 |
 | **L09-1** **Explain** CIS Benchmarks, DISA-STIG, USG and tailoring files in plain language. | [Lab 09: Compliance, CIS and DISA-STIG with USG](../labs/09-compliance-usg-cis-stig.md) | Check yourself Q4, Q5 |
+| **L11-5** **Isolate** a machine with a host firewall and **prove** its isolation, including from the web portal. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoints, Parts E3 and J4 · Check yourself Q6 |
 
 ### PO2: Positioning
 
@@ -64,6 +65,8 @@ This page shows, for every course-level **learning outcome**, which lab objectiv
 | **L04-1** **Install** Landscape Client and **explain** each setting in `client.conf`. | [Lab 04: Enroll your fleet](../labs/04-enroll-your-fleet.md) | Checkpoints, Part B · Check yourself Q3, Q4 |
 | **L04-2** **Register** a machine and **accept** it manually in the web portal. | [Lab 04: Enroll your fleet](../labs/04-enroll-your-fleet.md) | Checkpoint, Part B5 · Check yourself Q1 |
 | **L04-3** **Register** machines automatically with a registration key. | [Lab 04: Enroll your fleet](../labs/04-enroll-your-fleet.md) | Checkpoint, Part C3 · Check yourself Q1 |
+| **L11-6** **Install** Landscape Client offline by carrying a checksum-verified bundle across the gap, and **register** the isolated machine. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoints, Part F · Check yourself Q7 |
+| **L11-7** **Enable** repository management with Debarchive on a self-hosted server. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoint, Part G5 · Check yourself Q8 |
 
 ### PO4: Demonstrate core capabilities
 
@@ -100,6 +103,7 @@ This page shows, for every course-level **learning outcome**, which lab objectiv
 | **L10-2** **Create** roles that give least-privilege access. | [Lab 10: RBAC and access control](../labs/10-rbac-and-access-control.md) | Checkpoint, Part C · Check yourself Q4 |
 | **L10-3** **Explain** how administrator invitations work and their limits. | [Lab 10: RBAC and access control](../labs/10-rbac-and-access-control.md) | Check yourself Q5 |
 | **L10-4** **Explain** the single sign-on options and what Landscape does and doesn't take from the identity provider. | [Lab 10: RBAC and access control](../labs/10-rbac-and-access-control.md) | Check yourself Q3, Q6 |
+| **L11-9** **Deliver** approved software to the isolated machine with a repository profile, and **demonstrate** that unapproved software can't get in. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoints, Part J · Check yourself Q11 |
 | **L12-1** **Manage** local Linux users from the web portal. | [Lab 12: Beyond servers. Desktops, WSL, IoT and AI hardware](../labs/12-beyond-servers-wsl-iot-ai.md) | Checkpoint, Part A · Check yourself Q5 |
 | **L13-2** **Deliver** the 20-minute security-led demo in under 20 minutes, without notes. | [Lab 13: Your first demo](../labs/13-your-first-demo.md) | Practice exercise and rubric |
 | **L14-3** **Explain** what removing a machine from Landscape does, and doesn't do. | [Lab 14: Reset and teardown](../labs/14-reset-and-teardown.md) | Check yourself Q2 |
@@ -108,12 +112,18 @@ This page shows, for every course-level **learning outcome**, which lab objectiv
 
 | Objective | Lab | Checked by |
 |---|---|---|
-| **L11-1** **Articulate** the sovereignty and Sovereign AI story, and how each edition answers it. | [Lab 11: Sovereign, airgapped and repository mirroring](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q6 |
-| **L11-2** **List** the external endpoints a self-hosted server uses and **explain** what breaks without them. | [Lab 11: Sovereign, airgapped and repository mirroring](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q5 |
-| **L11-3** **Draw** the three airgap layouts, **compare** restricted and fully disconnected airgaps, and **state** the main limitation honestly. | [Lab 11: Sovereign, airgapped and repository mirroring](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoint, Part C · Check yourself Q1 |
-| **L11-4** **Explain** the repository-mirroring concepts: mirrors, filtered and signature-preserving mirrors, snapshots, local repositories, publications, targets and profiles. | [Lab 11: Sovereign, airgapped and repository mirroring](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q2, Q3, Q4 |
-| **L11-5** **Navigate** the Repositories pages and **describe** each field of the mirror form. | [Lab 11: Sovereign, airgapped and repository mirroring](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoint, Part E |
-| **L11-6** **Use** disk-space estimates in a sizing conversation. | [Lab 11: Sovereign, airgapped and repository mirroring](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q7 |
+| **L11-1** **Distinguish** data residency, data sovereignty, operational sovereignty, supply-chain security and Sovereign AI, and **map** each to a Landscape capability and edition. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q1, Q2 |
+| **L11-2** **Qualify** a sovereign or airgapped opportunity with targeted discovery questions, and **recognize** when to bring in professional services. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q3 |
+| **L11-3** **Design** an airgap architecture for a customer scenario: network style (restricted vs. fully disconnected), server layout and tiered mirrors. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Design exercise, Part C · Check yourself Q4 |
+| **L11-4** **List** what a self-hosted server reaches on the Internet, what breaks without each endpoint, and the documented offline workaround. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q5 |
+| **L11-5** **Isolate** a machine with a host firewall and **prove** its isolation, including from the web portal. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoints, Parts E3 and J4 · Check yourself Q6 |
+| **L11-6** **Install** Landscape Client offline by carrying a checksum-verified bundle across the gap, and **register** the isolated machine. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoints, Part F · Check yourself Q7 |
+| **L11-7** **Enable** repository management with Debarchive on a self-hosted server. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoint, Part G5 · Check yourself Q8 |
+| **L11-8** **Build** a filtered mirror and **publish** it signed with your own GPG key, explaining every component on the way. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoints, Part I · Check yourself Q9, Q10 |
+| **L11-9** **Deliver** approved software to the isolated machine with a repository profile, and **demonstrate** that unapproved software can't get in. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Checkpoints, Part J · Check yourself Q11 |
+| **L11-10** **Explain** snapshot mirrors, ESM mirrors, local repositories and the fully disconnected update process, including their limitations. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q12 |
+| **L11-11** **Deliver** the 15-minute sovereignty demo and **answer** airgap objections honestly. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Part L demo run-through · Check yourself Q13, Q14 |
+| **L11-12** **Estimate** mirror storage and **explain** how to reduce it. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q15 |
 | **L12-2** **Explain** desktop features: FDE recovery keys, Sanitize and autoinstall provisioning. | [Lab 12: Beyond servers. Desktops, WSL, IoT and AI hardware](../labs/12-beyond-servers-wsl-iot-ai.md) | Check yourself Q3 |
 | **L12-3** **Explain** how Landscape manages Windows machines running WSL, including WSL profiles. | [Lab 12: Beyond servers. Desktops, WSL, IoT and AI hardware](../labs/12-beyond-servers-wsl-iot-ai.md) | Check yourself Q1, Q6 |
 | **L12-4** **Explain** how Landscape manages Ubuntu Core and IoT devices. | [Lab 12: Beyond servers. Desktops, WSL, IoT and AI hardware](../labs/12-beyond-servers-wsl-iot-ai.md) | Check yourself Q2 |
@@ -131,7 +141,9 @@ This page shows, for every course-level **learning outcome**, which lab objectiv
 | **L08-5** **Explain** reboot and removal profiles and their business value. | [Lab 08: Packages, snaps and profiles](../labs/08-packages-snaps-and-profiles.md) | Check yourself Q4 |
 | **L08-6** **Choose** the right profile type for a customer requirement. | [Lab 08: Packages, snaps and profiles](../labs/08-packages-snaps-and-profiles.md) | Check yourself Q7 |
 | **L09-4** **Download** and **interpret** a USG audit report, and **use** it in a compliance story. | [Lab 09: Compliance, CIS and DISA-STIG with USG](../labs/09-compliance-usg-cis-stig.md) | Checkpoint, Part C · Check yourself Q6 |
-| **L11-1** **Articulate** the sovereignty and Sovereign AI story, and how each edition answers it. | [Lab 11: Sovereign, airgapped and repository mirroring](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q6 |
+| **L11-1** **Distinguish** data residency, data sovereignty, operational sovereignty, supply-chain security and Sovereign AI, and **map** each to a Landscape capability and edition. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q1, Q2 |
+| **L11-2** **Qualify** a sovereign or airgapped opportunity with targeted discovery questions, and **recognize** when to bring in professional services. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Check yourself Q3 |
+| **L11-11** **Deliver** the 15-minute sovereignty demo and **answer** airgap objections honestly. | [Lab 11: Sovereign, airgapped and repository mirroring ⭐ flagship lab](../labs/11-sovereign-airgapped-and-repos.md) | Part L demo run-through · Check yourself Q13, Q14 |
 | **L12-5** **Position** Landscape for AI hardware such as NVIDIA DGX Spark, and **state** what stays with NVIDIA tooling. | [Lab 12: Beyond servers. Desktops, WSL, IoT and AI hardware](../labs/12-beyond-servers-wsl-iot-ai.md) | Check yourself Q4 |
 | **L13-1** **Run** discovery and **choose** the demo storyline that fits the customer's answers. | [Lab 13: Your first demo](../labs/13-your-first-demo.md) | Check yourself Q1 |
 | **L13-2** **Deliver** the 20-minute security-led demo in under 20 minutes, without notes. | [Lab 13: Your first demo](../labs/13-your-first-demo.md) | Practice exercise and rubric |

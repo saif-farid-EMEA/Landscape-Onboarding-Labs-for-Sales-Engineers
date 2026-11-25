@@ -41,7 +41,10 @@ Every lab starts with its own **learning objectives** (e.g. `L06-2`). Each objec
 - A laptop (macOS, Windows 10/11 or Ubuntu) with **16 GB RAM and 40 GB free disk** (recommended). With 8 GB RAM, take the lighter path described in [Lab 00](labs/00-start-here.md).
 - Admin rights to install one app ([Multipass](https://canonical.com/multipass), Canonical's free tool for creating Ubuntu virtual machines).
 - A free **Ubuntu One** account and a free **Ubuntu Pro** personal token (covers 5 machines). Lab 00 walks you through both.
-- About **10 to 12 hours** in total. Spread it over a week if you like; each lab stands on its own.
+- About **14 to 16 hours** in total. Spread it over one to two weeks; each lab stands on its own.
+
+> [!TIP]
+> **⭐ Lab 11 (Sovereign, airgapped and repository mirroring) is the flagship of this course.** Sovereignty and Sovereign AI deals are often the largest and most strategic, and they're where Landscape differs most from SaaS-only tools. Budget about 4 hours for it, and don't skip the hands-on airgap build.
 
 ## The lab map
 
@@ -58,7 +61,7 @@ Every lab starts with its own **learning objectives** (e.g. `L06-2`). Each objec
 | 08 | [Packages, snaps and profiles](labs/08-packages-snaps-and-profiles.md) | Install or block software fleet-wide, and set maintenance windows | PO4, PO6 | 60 min |
 | 09 | [Compliance: CIS and DISA-STIG with USG](labs/09-compliance-usg-cis-stig.md) | Audit machines against a hardening benchmark and download an audit report | PO1, PO4, PO6 | 60 min |
 | 10 | [RBAC and access control](labs/10-rbac-and-access-control.md) | Show least-privilege, multi-team administration | PO2, PO4 | 30 min |
-| 11 | [Sovereign, airgapped and repository mirroring](labs/11-sovereign-airgapped-and-repos.md) | Tell the "Sovereign AI / disconnected" story and explain mirrors and snapshots | PO5, PO6 | 45 min |
+| 11 | ⭐ [Sovereign, airgapped and repository mirroring](labs/11-sovereign-airgapped-and-repos.md) | **Flagship.** Design airgap architectures, build a firewalled machine, install Landscape offline, and feed it only approved software from your own signed mirror; then pitch it as Sovereign AI | PO1, PO3, PO4, PO5, PO6 | 4 h |
 | 12 | [Beyond servers: desktops, WSL, IoT and AI hardware](labs/12-beyond-servers-wsl-iot-ai.md) | Position Landscape for Windows+WSL, Ubuntu Core devices and NVIDIA DGX Spark | PO4, PO5, PO6 | 30 min |
 | 13 | [Your first demo](labs/13-your-first-demo.md) | Rehearse a 20-minute demo with discovery questions and objection handling | PO4, PO6, PO7 | 60 min |
 | 14 | [Reset and teardown](labs/14-reset-and-teardown.md) | Reset the demo between calls, or delete everything | PO4, PO6, PO7 | 15 min |

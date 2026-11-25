@@ -25,11 +25,13 @@ Page numbers refer to the PDF export of the docs (867 pages, "latest", 2026) tha
 | RBAC, access groups, roles | Manage administrators and roles; Manage access groups; Terms | 248, 249, 775 | ⭐⭐⭐ |
 | SSO: OIDC / AD / PAM | How to enable OIDC; Active Directory; PAM | 202, 200, 204 | ⭐⭐ |
 | Authentication model, JWT, MFA | Authentication and authorization in Landscape | 857 | ⭐ |
-| Airgapped install | How to install Landscape in an airgapped or offline environment | 121 | ⭐⭐⭐ |
+| Airgapped install | How to install Landscape in an airgapped or offline environment | 121 | ⭐⭐⭐ (Lab 11) |
 | Airgapped repositories | How to manage repositories in an airgapped or offline environment | 235 | ⭐⭐ |
 | Tiered / multi-region mirrors | How to create tiered repository mirrors | 238 | ⭐⭐ |
-| Repository mirroring concepts | Explanation → Repository mirroring | 827 | ⭐⭐ |
-| Mirroring how-to (26.04+) | Manage and mirror repositories from the web portal; end-to-end guide; Debarchive set-up | 205, 227, 145 | ⭐ |
+| Repository mirroring concepts | Explanation → Repository mirroring | 827 | ⭐⭐⭐ (Lab 11) |
+| Mirroring how-to (26.04+) | Manage and mirror repositories from the web portal; end-to-end guide; Debarchive set-up | 205, 227, 145 | ⭐⭐⭐ (Lab 11) |
+| Repository signing keys | Explanation → GPG keys; Hardening → Secure your GPG keys | 832, 342 | ⭐⭐ |
+| Offline workarounds (USN database, invitations without email) | How to install Landscape in an airgapped or offline environment → Additional considerations | 121+ | ⭐⭐ |
 | Network/firewall requirements | About self-hosted Landscape → Network access | 803 | ⭐⭐ |
 | Sizing / system requirements | About self-hosted Landscape → System requirements | 802–803 | ⭐⭐ |
 | Architecture (server internals) | Landscape Server architecture; Client architecture | 805+ | ⭐ |

@@ -167,7 +167,7 @@ Since 26.04 LTS, you can trigger **Ubuntu release upgrades** (for example 22.04 
 | **Removal** | Remove machines that stopped reporting | All |
 | **Script** | Run scripts post-enrollment, on a date, or on a schedule | Self-hosted 25.04+ |
 | **USG** | CIS / DISA-STIG audit and fix (Lab 09) | Self-hosted 25.04+ |
-| **Repository** | Which APT sources and pockets machines use (Lab 11) | Self-hosted |
+| **Repository** | Points machines at approved, signed repositories (hands-on in ⭐ Lab 11). Found under **Repositories → Repository profiles** | Self-hosted |
 | **WSL** | Which Ubuntu WSL instances Windows machines must have (Lab 12) | — |
 
 ## ❓ Check yourself

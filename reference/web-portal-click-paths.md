@@ -25,7 +25,9 @@ Quick lookup for live demos. Paths are for the **modern web portal** (default fr
 | See all activities | **Activities** (sidebar), or **machine → Activities** |
 | Profiles | **Profiles →** Package / Upgrade / Reboot / Removal / Script / USG / Repository / WSL |
 | Download a USG audit | **Profiles → USG profiles → ⋮ → Download audit** |
-| Repository mirrors | **Repositories →** Mirrors / Local repositories / Publication targets / Publications |
+| Repository mirrors | **Repositories →** Mirrors / Local repositories / Publication targets / Publications / Repository profiles (needs Debarchive, 26.04+) |
+| Create / sync / publish a mirror | **Repositories → Mirrors → Add mirror**; select → **Update** (sync); select → **Publish** |
+| Point machines at a mirror | **Repositories → Repository profiles → Add repository profile** (deb line + public GPG key + tag) |
 | Access groups | **Org. settings → Access groups** |
 | Roles | **Org. settings → Roles** |
 | Invite an admin | **Org. settings → Administrators → Invite administrator** |

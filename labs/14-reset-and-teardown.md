@@ -101,13 +101,23 @@ multipass exec web-01 -- sudo pro detach --assume-yes
 
 *What this does:* detaches web-01 from Ubuntu Pro. `--assume-yes` skips the confirmation prompt. Repeat for `db-01`, `legacy-01` (and `landscape-server` if you attached it in Lab 03).
 
+For **airgap-01** (Lab 11), turn its firewall off first, because detaching needs to reach Canonical's servers:
+
+```bash
+multipass exec airgap-01 -- sudo ufw disable
+```
+
+```bash
+multipass exec airgap-01 -- sudo pro detach --assume-yes
+```
+
 ### 2. Delete the VMs
 
 ```bash
-multipass delete web-01 db-01 legacy-01 landscape-server --purge
+multipass delete web-01 db-01 legacy-01 airgap-01 landscape-server --purge
 ```
 
-*What this does:* deletes the four VMs and (`--purge`) frees their disk space immediately.
+*What this does:* deletes all your lab VMs and (`--purge`) frees their disk space immediately. If you skipped Lab 11, leave `airgap-01` out of the command.
 
 ✅ **Checkpoint:** `multipass list` shows no instances, and your Pro dashboard (<https://ubuntu.com/pro/dashboard>) shows the seats are no longer in use.
 

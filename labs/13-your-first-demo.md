@@ -61,7 +61,7 @@ Ask these (or find out from the account team) **before** you demo. The answers t
 | **Security / CVEs** (CISO, SecOps) | Discover → fix → verify a vulnerability; Livepatch | 06, 07D |
 | **Compliance** (GRC, auditors, public sector) | USG audit → report → fix; RBAC; security logs | 09, 10 |
 | **Operations efficiency** (IT ops, platform team) | Inventory → profiles → scheduled upgrades → scripts | 05, 08, 07 |
-| **Sovereignty / airgap** (government, defence, Sovereign AI) | Self-hosted architecture, mirrors and snapshots, SSO | 11, 10 |
+| **Sovereignty / airgap** (government, defence, Sovereign AI) | ⭐ The 15-minute sovereignty demo in [Lab 11, Part L](11-sovereign-airgapped-and-repos.md#part-l-the-15-minute-sovereignty-demo): airgap-01, prove-airgap script, signed mirror, approved vs. unapproved packages | 11, 10, 09 |
 | **Developer and AI fleets** | WSL, DGX Spark, desktops | 12 |
 
 ---
@@ -91,7 +91,7 @@ Ask these (or find out from the account team) **before** you demo. The answers t
 
 - **Compliance-led:** open with **USG profiles → Download audit** (pass rate, one failing high-severity rule and its rationale), then RBAC (*"auditors get read-only access"*), then security event logging.
 - **Ops-led:** open with **Instances** (mixed releases, tags, saved searches, annotations), then **Deb management** across machines, **package profile** (`production-baseline`), then a read-only **script** across the fleet.
-- **Sovereignty-led:** start on a whiteboard (Lab 11 layouts), then show the self-hosted portal, the **Repositories** pages and SSO options. Close with *"every byte stays inside your boundary."*
+- **Sovereignty-led:** run the full [15-minute sovereignty demo from Lab 11](11-sovereign-airgapped-and-repos.md#part-l-the-15-minute-sovereignty-demo): whiteboard their boundary, prove airgap-01 is isolated, show the signed mirror, install an approved package, show an unapproved one can't get in. Close with *"every byte stays inside your boundary."*
 - **AI/developer-led:** WSL hosts and child instances, the DGX Spark story, running NVIDIA reference scripts as Landscape scripts.
 
 ---
