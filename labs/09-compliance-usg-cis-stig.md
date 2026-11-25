@@ -2,6 +2,21 @@
 
 **Time:** 60 minutes (some of it waiting) · **Web portal** 🖱️ · **Self-hosted Landscape 25.04 or later**
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L09-1 | **Explain** CIS Benchmarks, DISA-STIG, USG and tailoring files in plain language. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities), [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Check yourself Q4, Q5 |
+| L09-2 | **Prepare** machines for USG audits from the web portal. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part A · Check yourself Q2 |
+| L09-3 | **Create** a USG profile, and **explain** its three modes and scheduling rules. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Check yourself Q1, Q3 |
+| L09-4 | **Download** and **interpret** a USG audit report, and **use** it in a compliance story. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities), [PO6](../reference/learning-objectives.md#po6-sell) | Checkpoint, Part C · Check yourself Q6 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 Regulated customers (banks, governments, defence, healthcare, telecoms) don't just need machines to *be* secure. They need to **prove** it, repeatedly, to auditors. Frameworks such as **CIS Benchmarks** and **DISA-STIG** define hundreds of hardening rules, and regulations such as **NIS2** and **DORA** in the EU, or **FedRAMP** in the US, raise the bar for evidence.
@@ -112,28 +127,42 @@ To undo: `multipass restore db-01.before-cis-fix` (the VM must be stopped first)
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. What are the three USG profile modes?</summary>
+<summary>1. What are the three USG profile modes? <em>(L09-3)</em></summary>
 
 Audit; Fix and audit; Fix, restart, audit.
 </details>
 
 <details>
-<summary>2. What does a machine need before Landscape can audit it with USG?</summary>
+<summary>2. What does a machine need before Landscape can audit it with USG? <em>(L09-2)</em></summary>
 
 Ubuntu Pro attached, USG enabled and installed (`pro enable usg`, `apt install usg`), and the `UsgManager` plugin enabled in the client configuration. The server must be self-hosted Landscape 25.04 or later.
 </details>
 
 <details>
-<summary>3. A customer wants daily audits. What do you say?</summary>
+<summary>3. A customer wants daily audits. What do you say? <em>(L09-3)</em></summary>
 
 Recurring USG profiles run at most once every 7 days, so weekly is the cadence. For something in between, they can schedule an extra one-off ("on a date") run or run an audit on demand from the profile's actions menu.
 </details>
 
 <details>
-<summary>4. What's a tailoring file, and why do auditors care?</summary>
+<summary>4. What's a tailoring file, and why do auditors care? <em>(L09-1)</em></summary>
 
 It's a customization of a benchmark (rules disabled or values changed). It documents the organization's accepted exceptions, which is what auditors expect to see.
+</details>
+
+<details>
+<summary>5. What's the difference between a CIS Benchmark and DISA-STIG, in one sentence each? <em>(L09-1)</em></summary>
+
+CIS Benchmarks are industry-consensus hardening guidelines from the Center for Internet Security, usually at Level 1 and Level 2. DISA-STIGs are the US Defense Information Systems Agency's hardening guides, required for US Department of Defense systems.
+</details>
+
+<details>
+<summary>6. An auditor asks for evidence of compliance over the last quarter. What do you download, and which options do you choose? <em>(L09-4)</em></summary>
+
+Profiles → USG profiles → ⋮ → Download audit, with a **date range** covering the quarter, and the **Detailed view** if they need individual rules with severity and rationale (Summary only gives the pass rate per machine).
 </details>
 
 ## 📚 Read more

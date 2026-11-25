@@ -2,6 +2,23 @@
 
 **Time:** 60 minutes (about 20 of it waiting for installs) · **Path:** Full path only. On the light path, skip to [Lab 04](04-enroll-your-fleet.md) and use your SaaS account.
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L03-1 | **Create** a VM with Multipass and **find** its IP address. | [PO3](../reference/learning-objectives.md#po3-build) | Checkpoint, Step 1 |
+| L03-2 | **Explain** what a PPA is and **choose** between the LTS and latest-stable Landscape PPAs. | [PO1](../reference/learning-objectives.md#po1-linux-fluency), [PO3](../reference/learning-objectives.md#po3-build) | Check yourself Q5 |
+| L03-3 | **Install** Landscape Server in Quickstart mode and **name** the components it installs. | [PO3](../reference/learning-objectives.md#po3-build) | Checkpoint, Step 5 · Check yourself Q1 |
+| L03-4 | **Configure** the background-service snaps required since 26.04 and **verify** that every service is running. | [PO3](../reference/learning-objectives.md#po3-build) | Checkpoints, Step 6 · Check yourself Q6 |
+| L03-5 | **Create** the first administrator and **identify** the self-hosted account name. | [PO3](../reference/learning-objectives.md#po3-build) | Checkpoint, Step 8 · Check yourself Q2, Q4 |
+| L03-6 | **Contrast** a Quickstart lab install with production deployment options. | [PO2](../reference/learning-objectives.md#po2-positioning) | Check yourself Q3 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 1. You get a demo environment that **you own**: no shared-tenant surprises, and every self-hosted feature is available.
@@ -293,28 +310,42 @@ multipass start landscape-server
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. What are the three main third-party services behind Landscape Server?</summary>
+<summary>1. What are the three main third-party services behind Landscape Server? <em>(L03-3)</em></summary>
 
 PostgreSQL (database), RabbitMQ (message queue) and a reverse proxy/web server: Apache for Quickstart, HAProxy for charmed/HA deployments.
 </details>
 
 <details>
-<summary>2. What's the account name on a self-hosted Landscape server?</summary>
+<summary>2. What's the account name on a self-hosted Landscape server? <em>(L03-5)</em></summary>
 
 `standalone`
 </details>
 
 <details>
-<summary>3. Which install method would you mention to a customer who needs high availability?</summary>
+<summary>3. Which install method would you mention to a customer who needs high availability? <em>(L03-6)</em></summary>
 
 The Juju-managed Landscape Server charms (optionally deployed with Terraform), with multiple Landscape servers behind HAProxy.
 </details>
 
 <details>
-<summary>4. Why did the browser warn you, and is it a problem in production?</summary>
+<summary>4. Why did the browser warn you, and is it a problem in production? <em>(L03-5)</em></summary>
 
 The certificate is self-signed. In production the customer installs a trusted certificate (their own CA or Let's Encrypt), so there's no warning.
+</details>
+
+<details>
+<summary>5. What's a PPA, and which Landscape PPA would a production customer normally use? <em>(L03-2)</em></summary>
+
+A Personal Package Archive: an extra package repository hosted on Launchpad. Production customers normally use the LTS PPA, e.g. `ppa:landscape/self-hosted-26.04`.
+</details>
+
+<details>
+<summary>6. Which two snaps does Landscape Server need since 26.04 LTS, and how do you check that all Landscape services are running? <em>(L03-4)</em></summary>
+
+`landscape-task-handler` and `landscape-outbox`. Check them with `sudo snap services <snap>`, and check all Landscape services with `sudo lsctl status`.
 </details>
 
 ## 📚 Read more

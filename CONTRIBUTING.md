@@ -10,6 +10,7 @@ These labs only stay useful if they match the current product. If you spot a ren
 4. **Sales relevance.** Each lab keeps its *Why this matters on a call* section, a *Say it on the call* talk track and *Read more* pointers. If a topic matters less for sales, keep it short and link to the docs.
 5. **Accuracy over hype.** Buzzwords are welcome (Sovereign AI, Zero Trust, supply-chain security…) when they're *true* of Landscape. Never claim a feature, certification or integration that the official docs don't support. When unsure, write "check with the product team".
 6. **Editions matter.** If a feature is self-hosted only or needs a minimum version, say so.
+7. **Objectives first.** Every lab opens with a *Learning objectives* table. Each objective starts with an observable verb (explain, configure, demonstrate…), names the course outcome it supports (PO1–PO7, see the README), and says how it's checked: a ✅ checkpoint, an exercise, or a *Check yourself* question tagged with the objective ID. Don't add content that serves no objective, and don't add an objective that nothing checks. Update [`reference/learning-objectives.md`](reference/learning-objectives.md) in the same PR.
 
 ## Lab template
 
@@ -18,9 +19,14 @@ These labs only stay useful if they match the current product. If you spot a ren
 
 **Time:** … · **Prerequisite:** …
 
+## 🎓 Learning objectives
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| LNN-1 | **Verb** … | PO4 | Checkpoint, Part A · Check yourself Q1 |
+
 ## 🎯 Why this matters on a call
 ## Part A: …   (steps with 🖱️ / ⌨️, "What this does:", ✅ Checkpoint)
 ## 🎤 Say it on the call
-## ❓ Check yourself   (answers in <details>)
+## ❓ Check yourself   (answers in <details>, each question tagged with its objective ID)
 ## 📚 Read more
 ```

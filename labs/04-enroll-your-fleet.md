@@ -2,6 +2,23 @@
 
 **Time:** 60 minutes · **Prerequisite:** [Lab 03](03-build-your-demo-server.md) (or a SaaS account on the light path)
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L04-1 | **Install** Landscape Client and **explain** each setting in `client.conf`. | [PO3](../reference/learning-objectives.md#po3-build), [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Checkpoints, Part B · Check yourself Q3, Q4 |
+| L04-2 | **Register** a machine and **accept** it manually in the web portal. | [PO3](../reference/learning-objectives.md#po3-build) | Checkpoint, Part B5 · Check yourself Q1 |
+| L04-3 | **Register** machines automatically with a registration key. | [PO3](../reference/learning-objectives.md#po3-build) | Checkpoint, Part C3 · Check yourself Q1 |
+| L04-4 | **Explain** the safeguards around remote script execution on clients. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Check yourself Q2 |
+| L04-5 | **Describe** the options for registering machines at scale. | [PO2](../reference/learning-objectives.md#po2-positioning), [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q5 |
+| L04-6 | **Diagnose** a failed registration using the client's configuration file and logs. | [PO7](../reference/learning-objectives.md#po7-self-sufficiency), [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Check yourself Q6 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 *"How do we get our 3,000 machines into Landscape?"* is one of the first practical questions you'll get. After this lab you'll be able to explain the options: **manual approval** (more control), **registration keys** (auto-accept, at scale), **`pro enable landscape`**, and baking registration into your provisioning (cloud-init, Ansible, golden images). You'll also have run each of them yourself.
@@ -245,28 +262,42 @@ You won't do these now, but you should be able to talk about them:
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. What's the difference between manual acceptance and a registration key?</summary>
+<summary>1. What's the difference between manual acceptance and a registration key? <em>(L04-2, L04-3)</em></summary>
 
 Without a key (or with auto-register turned off), new machines wait in a pending queue for an admin to accept them. With a registration key and auto-register on, machines that present the key are accepted automatically.
 </details>
 
 <details>
-<summary>2. Is remote script execution enabled by default on clients?</summary>
+<summary>2. Is remote script execution enabled by default on clients? <em>(L04-4)</em></summary>
 
 No. It's an opt-in plugin (`ScriptExecution`), and `script_users` limits which local users scripts can run as.
 </details>
 
 <details>
-<summary>3. Where is the client's configuration file, and where are its logs?</summary>
+<summary>3. Where is the client's configuration file, and where are its logs? <em>(L04-1)</em></summary>
 
 `/etc/landscape/client.conf`; logs are in `/var/log/landscape/`.
 </details>
 
 <details>
-<summary>4. Why did we install the client from the PPA instead of Ubuntu's archive?</summary>
+<summary>4. Why did we install the client from the PPA instead of Ubuntu's archive? <em>(L04-1)</em></summary>
 
 The archive version is the one that shipped with that Ubuntu release. The PPA has the latest client features, such as attaching Ubuntu Pro from the web portal.
+</details>
+
+<details>
+<summary>5. A customer asks: "How do we get 3,000 servers into Landscape without clicking Accept 3,000 times?" Name three options. <em>(L04-5)</em></summary>
+
+Any three of: a registration key with auto-register; `pro enable landscape` run non-interactively; registering from provisioning tools (cloud-init, Ansible, a golden image); the Juju subordinate charm; Ubuntu Pro for WSL for Windows machines; the client snap built into Ubuntu Core images.
+</details>
+
+<details>
+<summary>6. A machine's registration says it can't connect to the server. Name three things you check, and where. <em>(L04-6)</em></summary>
+
+Any three of: that `/etc/landscape/server.pem` contains the server certificate; that `url` (https) and `ping_url` (http) in `/etc/landscape/client.conf` have the right server address; that `account_name` is correct; the last lines of `/var/log/landscape/broker.log`. See [Troubleshooting](../reference/troubleshooting.md#client-registration-fails).
 </details>
 
 ## 📚 Read more

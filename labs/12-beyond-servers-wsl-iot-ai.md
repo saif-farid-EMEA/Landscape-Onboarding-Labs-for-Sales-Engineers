@@ -2,6 +2,22 @@
 
 **Time:** 30 minutes (plus an optional Windows 11 stretch goal) · **Mostly concepts, one web-portal exercise**
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L12-1 | **Manage** local Linux users from the web portal. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part A · Check yourself Q5 |
+| L12-2 | **Explain** desktop features: FDE recovery keys, Sanitize and autoinstall provisioning. | [PO5](../reference/learning-objectives.md#po5-specialized-environments) | Check yourself Q3 |
+| L12-3 | **Explain** how Landscape manages Windows machines running WSL, including WSL profiles. | [PO5](../reference/learning-objectives.md#po5-specialized-environments) | Check yourself Q1, Q6 |
+| L12-4 | **Explain** how Landscape manages Ubuntu Core and IoT devices. | [PO5](../reference/learning-objectives.md#po5-specialized-environments) | Check yourself Q2 |
+| L12-5 | **Position** Landscape for AI hardware such as NVIDIA DGX Spark, and **state** what stays with NVIDIA tooling. | [PO5](../reference/learning-objectives.md#po5-specialized-environments), [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q4 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 Customers rarely have "just servers". They have **developer laptops**, **Windows machines running Ubuntu on WSL**, **edge and IoT devices** in factories and shops, and increasingly **AI workstations and GPU systems**. A big part of Landscape's value is that it's **one tool for every kind of Ubuntu**. This lab gives you the talking points for each, plus one more hands-on capability: managing local users from the browser.
@@ -95,28 +111,42 @@ Follow the official guide **"How to set up Ubuntu Pro for WSL and register WSL h
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. What app connects a Windows 11 machine's WSL instances to Landscape?</summary>
+<summary>1. What app connects a Windows 11 machine's WSL instances to Landscape? <em>(L12-3)</em></summary>
 
 Ubuntu Pro for WSL, from the Microsoft Store.
 </details>
 
 <details>
-<summary>2. Which Landscape Client variant runs on Ubuntu Core devices?</summary>
+<summary>2. Which Landscape Client variant runs on Ubuntu Core devices? <em>(L12-4)</em></summary>
 
 The Landscape Client snap (strictly confined).
 </details>
 
 <details>
-<summary>3. What does "Sanitize" do, and can you undo it?</summary>
+<summary>3. What does "Sanitize" do, and can you undo it? <em>(L12-2)</em></summary>
 
 It erases the LUKS key slots on all encrypted volumes, making their data unrecoverable, then shuts the machine down. It's irreversible once the activity is delivered.
 </details>
 
 <details>
-<summary>4. What does Landscape manage on an NVIDIA DGX Spark, and what does it leave to NVIDIA tools?</summary>
+<summary>4. What does Landscape manage on an NVIDIA DGX Spark, and what does it leave to NVIDIA tools? <em>(L12-5)</em></summary>
 
 Landscape manages the Ubuntu-based DGX OS: inventory, packages, security updates, tags and access groups, and scripts (including NVIDIA's Landscape reference scripts). Hardware, firmware, drivers, recovery and out-of-band management use NVIDIA's tooling.
+</details>
+
+<details>
+<summary>5. A contractor leaves today. How can Landscape help, without anyone using SSH? <em>(L12-1)</em></summary>
+
+Open each machine's Users tab and lock (or remove) the contractor's local account. Each change runs as an activity, which also records when it happened.
+</details>
+
+<details>
+<summary>6. What does a WSL profile let IT enforce on Windows machines? <em>(L12-3)</em></summary>
+
+Which Ubuntu WSL instance must be installed (from the Microsoft Store or a custom image, optionally with cloud-init), and how to treat WSL instances that weren't created through Landscape. Landscape flags Windows machines that don't comply.
 </details>
 
 ## 📚 Read more

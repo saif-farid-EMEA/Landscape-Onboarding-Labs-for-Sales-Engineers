@@ -2,6 +2,22 @@
 
 **Time:** 60 minutes · **Mostly web portal** 🖱️ (one short terminal step)
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L06-1 | **Identify** every machine with outstanding security updates, in at least two ways. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part A · Check yourself Q5 |
+| L06-2 | **Interpret** a USN (the CVEs it fixes, priority, affected releases) and **explain** where Landscape's security data comes from. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities), [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Checkpoint, Part A · Check yourself Q1, Q6 |
+| L06-3 | **Apply** security fixes to one machine and to many, and **explain** the difference between the bulk options. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoints, Parts D and E · Check yourself Q2 |
+| L06-4 | **Interpret** the Kernel tab's Livepatch statuses. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Check yourself Q3 |
+| L06-5 | **Deliver** the 5-minute security demo, including how to prove a fix to an auditor. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities), [PO6](../reference/learning-objectives.md#po6-sell) | Practice table · Check yourself Q4 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 This is **the** Landscape demo. Almost every customer has some version of: *"A critical CVE drops. How fast can we find every affected machine, patch it and prove it's done?"* Attackers increasingly use automation, and now AI, to turn new CVEs into working exploits faster, so the window between *disclosure* and *exploitation* keeps shrinking. Your demo shows that window closing with a few clicks:
@@ -156,28 +172,42 @@ Doing it by hand is good for the demo. Customers want it **automatic**: an **upg
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. Where does Landscape get the information that an update is a security update?</summary>
+<summary>1. Where does Landscape get the information that an update is a security update? <em>(L06-2)</em></summary>
 
 From the Ubuntu Security Notices (USN) database, which Landscape Server downloads from Canonical (usn.ubuntu.com). That's why, without that access, security updates can't be told apart from regular ones.
 </details>
 
 <details>
-<summary>2. If you select several machines and click Upgrade, are only security updates installed?</summary>
+<summary>2. If you select several machines and click Upgrade, are only security updates installed? <em>(L06-3)</em></summary>
 
 No. That upgrades all packages. For security-only, upgrade from each instance's Security issues tab, choose specific packages with Deb management (26.10+), or use an upgrade profile set to security-only.
 </details>
 
 <details>
-<summary>3. What does the Livepatch status "Restart required" mean?</summary>
+<summary>3. What does the Livepatch status "Restart required" mean? <em>(L06-4)</em></summary>
 
 A new kernel has been installed, and the machine needs a restart to start using it.
 </details>
 
 <details>
-<summary>4. A customer asks: "How do I prove to an auditor that the fix was applied?"</summary>
+<summary>4. A customer asks: "How do I prove to an auditor that the fix was applied?" <em>(L06-5)</em></summary>
 
 Every fix is an activity with its creator, timestamps and result; the machine's Security issues tab and Packages tab show the current state; and USG audits (Lab 09) and compliance reports give point-in-time evidence.
+</details>
+
+<details>
+<summary>5. Name two ways to list the machines that need security updates. <em>(L06-1)</em></summary>
+
+Any two of: the Security link in Overview's Upgrades section; Instances → Status → Security upgrades; searching `alert:security-upgrades`.
+</details>
+
+<details>
+<summary>6. You open a USN page. Which three things do you look for to brief a customer? <em>(L06-2)</em></summary>
+
+The CVE IDs it fixes, their priority or severity, and the affected Ubuntu releases with the fixed package versions.
 </details>
 
 ## 📚 Read more

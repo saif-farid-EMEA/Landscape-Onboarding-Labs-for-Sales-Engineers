@@ -2,6 +2,23 @@
 
 **Time:** 60 minutes (and then practice, practice, practice) · **Prerequisite:** Labs 04 to 10
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L13-1 | **Run** discovery and **choose** the demo storyline that fits the customer's answers. | [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q1 |
+| L13-2 | **Deliver** the 20-minute security-led demo in under 20 minutes, without notes. | [PO6](../reference/learning-objectives.md#po6-sell), [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Practice exercise and rubric |
+| L13-3 | **Adapt** the demo for compliance, operations, sovereignty and AI/developer audiences. | [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q2 |
+| L13-4 | **Recover** smoothly from common demo failures. | [PO6](../reference/learning-objectives.md#po6-sell), [PO7](../reference/learning-objectives.md#po7-self-sufficiency) | Check yourself Q3 |
+| L13-5 | **Handle** common objections accurately, and say "let me confirm" when unsure. | [PO6](../reference/learning-objectives.md#po6-sell) | Practice exercise (skeptical CISO role-play) · Check yourself Q4 |
+| L13-6 | **Locate** the official documentation section that answers a customer's deep technical question. | [PO7](../reference/learning-objectives.md#po7-self-sufficiency) | Check yourself Q5 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Goal
 
 Run a **20-minute, story-driven Landscape demo** on your own estate, tailored to the person in front of you, and handle the questions that follow.
@@ -106,6 +123,42 @@ Ask these (or find out from the account team) **before** you demo. The answers t
 | Handled waiting time | Silence while spinners ran | Filled with value and moved on |
 | Accuracy | Guessed at an answer | Precise, or "let me confirm" |
 | Close | Ended on a feature | Ended with a question about their priorities |
+
+---
+
+## ❓ Check yourself
+
+Each question is tagged with the learning objective it checks.
+
+<details>
+<summary>1. In discovery, a customer says: "Our auditors gave us three findings about unpatched servers, and we report against CIS." Which storyline do you choose? <em>(L13-1)</em></summary>
+
+Compliance-led (USG audit report, then patching and RBAC), with security patching as the second act. See section 2.
+</details>
+
+<details>
+<summary>2. You're demoing to a government agency that mentions "no data may leave our network". What do you change in your demo? <em>(L13-3)</em></summary>
+
+Lead with the sovereignty storyline: whiteboard the self-hosted and airgapped architecture, then show the self-hosted portal, the Repositories pages and SSO options (section 4).
+</details>
+
+<details>
+<summary>3. Mid-demo, your upgrade activity is stuck on "Queued". What do you say and do? <em>(L13-4)</em></summary>
+
+Explain that the agent checks in on an interval (designed for machines behind firewalls), move on to the next part of the story, and come back to the result later. Fix the underlying issue after the call.
+</details>
+
+<details>
+<summary>4. A CISO says: "Agents are a security risk." Give your answer. <em>(L13-5)</em></summary>
+
+The client connects outbound over HTTPS, so there's no inbound port to open; remote script execution is off by default and limited to the users you allow; every action is an audited activity governed by RBAC. Compare that with shared SSH keys or root on every box.
+</details>
+
+<details>
+<summary>5. After the demo, the customer's architect asks: (a) which outbound hosts the server needs, (b) how passwords and data at rest are protected, (c) how to run Landscape highly available. Where do you look? <em>(L13-6)</em></summary>
+
+(a) *About self-hosted Landscape → Network access*; (b) *Cryptographic technology in Landscape* and *Data handling*; (c) *How to install and configure Landscape for high-availability deployments*. All are listed in the [Read-more map](../reference/read-more-map.md). Send the links, then follow up with any answer you need to confirm.
+</details>
 
 ---
 

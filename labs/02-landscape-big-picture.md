@@ -2,6 +2,24 @@
 
 **Time:** 45 minutes · **Mostly reading and whiteboarding, plus one optional web sign-up**
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L02-1 | **Describe** Landscape in one sentence and **name** who uses it. | [PO2](../reference/learning-objectives.md#po2-positioning) | Whiteboard exercise |
+| L02-2 | **Explain** the client–server architecture, including activities and the fact that clients connect outbound. | [PO2](../reference/learning-objectives.md#po2-positioning) | Whiteboard exercise · Check yourself Q2, Q4 |
+| L02-3 | **Match** Landscape's capability pillars to the customer problems they solve. | [PO2](../reference/learning-objectives.md#po2-positioning) | Check yourself Q5 |
+| L02-4 | **Compare** SaaS, Managed and self-hosted Landscape and **recommend** one from customer requirements. | [PO2](../reference/learning-objectives.md#po2-positioning) | Check yourself Q1, Q3 |
+| L02-5 | **Explain** how Landscape is licensed through Ubuntu Pro. | [PO2](../reference/learning-objectives.md#po2-positioning) | Check yourself Q6 |
+| L02-6 | **Position** Landscape against Ansible and within the Canonical portfolio. | [PO2](../reference/learning-objectives.md#po2-positioning), [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q7 |
+| L02-7 | **Explain** the difference between Landscape LTS and latest-stable releases. | [PO2](../reference/learning-objectives.md#po2-positioning) | Check yourself Q8 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 In the first 5 minutes of a call, a customer decides whether you understand their world. You need to be able to say, without slides, **what Landscape is, how it works, how it's delivered and how it's licensed.** This lab gives you that.
@@ -135,28 +153,54 @@ Then explain the drawing out loud in 60 seconds, as if to a customer. Record you
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. A bank says "nothing leaves our data center, and we have no Internet on our production network." Which edition?</summary>
+<summary>1. A bank says "nothing leaves our data center, and we have no Internet on our production network." Which edition? <em>(L02-4)</em></summary>
 
 Self-hosted Landscape, possibly with repository mirroring for the airgapped network (Lab 11). Managed Landscape deployed on-premises is also worth raising if they don't want to operate it themselves.
 </details>
 
 <details>
-<summary>2. Do clients need inbound SSH open for Landscape to manage them?</summary>
+<summary>2. Do clients need inbound SSH open for Landscape to manage them? <em>(L02-2)</em></summary>
 
 No. The client connects out to the server over HTTPS and picks up queued activities.
 </details>
 
 <details>
-<summary>3. Which Landscape edition doesn't offer repository mirroring?</summary>
+<summary>3. Which Landscape edition doesn't offer repository mirroring? <em>(L02-4)</em></summary>
 
 Landscape SaaS.
 </details>
 
 <details>
-<summary>4. What is an "activity"?</summary>
+<summary>4. What is an "activity"? <em>(L02-2)</em></summary>
 
 A tracked unit of work, such as running a script or installing a package. It's queued on the server, delivered to the client when the client checks in, and its result (Succeeded/Failed) plus who requested it is recorded.
+</details>
+
+<details>
+<summary>5. A customer says "patching is slow, and kernel reboots hurt us". Which capabilities do you lead with? <em>(L02-3)</em></summary>
+
+Security patching (Security upgrades, USNs, one-click upgrades and upgrade profiles) and Livepatch status on the Kernel tab. See Labs 06 and 08.
+</details>
+
+<details>
+<summary>6. A customer already pays for Ubuntu Pro on 500 servers. What extra do they need to buy to start using Landscape SaaS? <em>(L02-5)</em></summary>
+
+Nothing extra for Landscape itself: Landscape SaaS is included in Ubuntu Pro. (Managed Landscape is a separate conversation with Sales.)
+</details>
+
+<details>
+<summary>7. In two sentences, how do Landscape and Ansible differ, and how can they work together? <em>(L02-6)</em></summary>
+
+Ansible is agentless and defines and enforces configuration from code; Landscape is agent-based and continuously observes and manages the state of an Ubuntu estate, tied to USNs, Livepatch and Pro, with RBAC. A common pattern is to provision with Ansible (its last task registers the Landscape client) and use Landscape for ongoing patching, auditing and delegated operations.
+</details>
+
+<details>
+<summary>8. Which self-hosted Landscape release would you recommend for production, and why? <em>(L02-7)</em></summary>
+
+The current LTS (26.04 LTS at the time of writing). LTS releases get standard support for 5 years plus ESM, while latest-stable releases are only supported until the next release.
 </details>
 
 ## 📚 Read more

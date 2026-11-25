@@ -2,6 +2,21 @@
 
 **Time:** 15 minutes
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L14-1 | **Prepare** the demo estate before a call with the pre-demo checklist. | [PO7](../reference/learning-objectives.md#po7-self-sufficiency), [PO6](../reference/learning-objectives.md#po6-sell) | Pre-demo checklist |
+| L14-2 | **Pause**, **resume** and **roll back** the estate with Multipass snapshots. | [PO7](../reference/learning-objectives.md#po7-self-sufficiency) | Check yourself Q1 |
+| L14-3 | **Explain** what removing a machine from Landscape does, and doesn't do. | [PO7](../reference/learning-objectives.md#po7-self-sufficiency), [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Check yourself Q2 |
+| L14-4 | **Tear down** the estate and **free** your Ubuntu Pro seats. | [PO7](../reference/learning-objectives.md#po7-self-sufficiency) | Checkpoint, Full teardown · Check yourself Q3 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Goal
 
 Keep your demo estate healthy between calls, save your laptop's battery when you're not demoing, and tear everything down cleanly (freeing your Ubuntu Pro seats) when you're done.
@@ -99,6 +114,30 @@ multipass delete web-01 db-01 legacy-01 landscape-server --purge
 ### 3. (Optional) Close your SaaS account
 
 If you created a Landscape SaaS account just for training, you can leave it (it's free) or ask Canonical to remove it.
+
+---
+
+## ❓ Check yourself
+
+Each question is tagged with the learning objective it checks.
+
+<details>
+<summary>1. You broke the server. What's the fastest way back to a clean install, and what's the side effect? <em>(L14-2)</em></summary>
+
+Stop the VM, `multipass restore landscape-server.fresh-install`, then start it. Everything done since the snapshot is lost, and the clients still think they're registered, so the cleanest fix is to recreate them.
+</details>
+
+<details>
+<summary>2. A customer worries: "If I remove a machine from Landscape, will it be wiped?" What do you answer? <em>(L14-3)</em></summary>
+
+No. Removing a machine only stops Landscape managing it; the machine itself isn't touched. (Wiping encrypted data is a separate, explicit action: Sanitize.)
+</details>
+
+<details>
+<summary>3. Why should you detach Ubuntu Pro before deleting your lab VMs? <em>(L14-4)</em></summary>
+
+The free personal subscription covers 5 machines. Deleted VMs that are still attached keep using seats until they're detached.
+</details>
 
 ---
 

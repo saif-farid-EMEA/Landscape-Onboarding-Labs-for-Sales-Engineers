@@ -2,6 +2,23 @@
 
 **Time:** 60 minutes · **Web portal** 🖱️
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L08-1 | **Install** and **hold** packages on one machine and across many. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoints, Parts A and B · Check yourself Q2 |
+| L08-2 | **Manage** snaps (install, hold, channels) from the web portal. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part C · Check yourself Q5 |
+| L08-3 | **Create** a package profile and **explain** how tags turn profiles into policy. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part D · Check yourself Q1, Q3 |
+| L08-4 | **Create** a security-only upgrade profile with a maintenance window. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part E · Check yourself Q6 |
+| L08-5 | **Explain** reboot and removal profiles and their business value. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities), [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q4 |
+| L08-6 | **Choose** the right profile type for a customer requirement. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities), [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q7 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 Lab 06 was *reactive*: find a problem and fix it. This lab is about **policy**: telling Landscape *how things should be* and letting it keep them that way.
@@ -155,28 +172,48 @@ Since 26.04 LTS, you can trigger **Ubuntu release upgrades** (for example 22.04 
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. You add the tag <code>production</code> to legacy-01. What happens?</summary>
+<summary>1. You add the tag <code>production</code> to legacy-01. What happens? <em>(L08-3)</em></summary>
 
 Every profile associated with the `production` tag (in the same access group) now applies to legacy-01: the package profile installs fail2ban, and the upgrade and reboot profiles start including it.
 </details>
 
 <details>
-<summary>2. What does holding a package do?</summary>
+<summary>2. What does holding a package do? <em>(L08-1)</em></summary>
 
 It pins the package at its current version, so automatic and bulk upgrades skip it until it's unheld. It can still be upgraded manually.
 </details>
 
 <details>
-<summary>3. Why does fail2ban make a good Ubuntu Pro talking point?</summary>
+<summary>3. Why does fail2ban make a good Ubuntu Pro talking point? <em>(L08-3)</em></summary>
 
 It's in the universe repository. Security fixes for universe packages come from Canonical only with Ubuntu Pro (ESM Apps).
 </details>
 
 <details>
-<summary>4. What does a removal profile do for licensing?</summary>
+<summary>4. What does a removal profile do for licensing? <em>(L08-5)</em></summary>
 
 It automatically removes machines that haven't contacted Landscape for N days, which releases the license seats they held.
+</details>
+
+<details>
+<summary>5. What's a snap channel, and what are your options if a customer doesn't want a snap to refresh automatically? <em>(L08-2)</em></summary>
+
+A channel (e.g. `latest/stable`) is the release stream a snap tracks and refreshes from. In Landscape you can hold the snap, pin a specific revision or switch channels.
+</details>
+
+<details>
+<summary>6. A customer wants security updates installed automatically every night, but only on production. What do you set up? <em>(L08-4)</em></summary>
+
+An upgrade profile set to security upgrades only, scheduled daily in their maintenance window (with randomized delivery), associated with the `production` tag.
+</details>
+
+<details>
+<summary>7. Which profile type fits each request: (a) staggered weekly reboots, (b) run a baseline script on every new machine, (c) audit against CIS every week? <em>(L08-6)</em></summary>
+
+(a) Reboot profile, (b) script profile with a post-enrollment trigger, (c) USG profile with a recurring schedule.
 </details>
 
 ## 📚 Read more

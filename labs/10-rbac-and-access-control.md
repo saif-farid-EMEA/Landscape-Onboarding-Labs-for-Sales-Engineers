@@ -2,6 +2,21 @@
 
 **Time:** 30 minutes · **Web portal** 🖱️
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L10-1 | **Build** an access-group hierarchy and **assign** machines to it. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoints, Parts A and B · Check yourself Q1, Q2 |
+| L10-2 | **Create** roles that give least-privilege access. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part C · Check yourself Q4 |
+| L10-3 | **Explain** how administrator invitations work and their limits. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Check yourself Q5 |
+| L10-4 | **Explain** the single sign-on options and what Landscape does and doesn't take from the identity provider. | [PO2](../reference/learning-objectives.md#po2-positioning), [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Check yourself Q3, Q6 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 Large organizations have many teams: the database team, the web team, a security team that should **see everything but change nothing**, an outsourced partner that should only touch one site. Without central management, the usual answer is shared SSH keys and too many people with `sudo`. That's a **Zero Trust** and audit nightmare.
@@ -101,28 +116,42 @@ Facts to get right:
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. An admin has a role on the <code>servers</code> access group. Can they manage db-01?</summary>
+<summary>1. An admin has a role on the <code>servers</code> access group. Can they manage db-01? <em>(L10-1)</em></summary>
 
 Yes. db-01 is in `database`, a child of `servers`, and rights on a parent include its children.
 </details>
 
 <details>
-<summary>2. If you delete the <code>web</code> access group, what happens to web-01?</summary>
+<summary>2. If you delete the <code>web</code> access group, what happens to web-01? <em>(L10-1)</em></summary>
 
 The group's resources (machines etc.) move to its parent access group, `servers`.
 </details>
 
 <details>
-<summary>3. Does Landscape take roles from the customer's identity provider groups?</summary>
+<summary>3. Does Landscape take roles from the customer's identity provider groups? <em>(L10-4)</em></summary>
 
 No. The IdP (OIDC, AD or PAM) is used for authentication only. Roles and permissions are defined in Landscape.
 </details>
 
 <details>
-<summary>4. How would you give a security team visibility without the ability to change anything?</summary>
+<summary>4. How would you give a security team visibility without the ability to change anything? <em>(L10-2)</em></summary>
 
 Create a role with only view permissions, associate it with the `global` access group, and assign it to the security team's administrators.
+</details>
+
+<details>
+<summary>5. You sent an admin invitation, but the email was forwarded around the team. Who becomes the administrator? <em>(L10-3)</em></summary>
+
+Whoever clicks the link and submits the form first, even if it's not the intended person. That's why you should keep track of pending invitations.
+</details>
+
+<details>
+<summary>6. A Landscape SaaS customer wants to log in with their own Okta. What do you tell them? <em>(L10-4)</em></summary>
+
+Bringing a custom identity provider isn't available on Landscape SaaS. It's available on Managed and self-hosted Landscape (OIDC, Active Directory or PAM), where their IdP handles authentication and MFA and Landscape keeps the roles.
 </details>
 
 ## 📚 Read more

@@ -2,9 +2,18 @@
 
 **Time:** 30 minutes · **You'll need:** your laptop, a web browser, an email address
 
-## Goal
+## 🎓 Learning objectives
 
-Get your accounts and your one tool ready, and learn how to read these labs.
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L00-1 | **Set up** the accounts and tools the labs need: an Ubuntu One account, a free Ubuntu Pro token and Multipass. | [PO3](../reference/learning-objectives.md#po3-build) | Checkpoint, section 3 |
+| L00-2 | **Explain** how Landscape relates to Ubuntu Pro and what the free tier includes. | [PO2](../reference/learning-objectives.md#po2-positioning) | Check yourself Q1, Q2 |
+| L00-3 | **Explain** what a virtual machine is in one sentence a customer would understand. | [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Check yourself Q3 |
+| L00-4 | **Choose** the full or light lab path based on your laptop's resources. | [PO3](../reference/learning-objectives.md#po3-build) | Section 4 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
 
 ---
 
@@ -115,20 +124,22 @@ Check your RAM:
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. How many machines does a free Ubuntu Pro personal subscription cover?</summary>
+<summary>1. How many machines does a free Ubuntu Pro personal subscription cover? <em>(L00-2)</em></summary>
 
 Up to 5 machines.
 </details>
 
 <details>
-<summary>2. Is Landscape a separate purchase from Ubuntu Pro?</summary>
+<summary>2. Is Landscape a separate purchase from Ubuntu Pro? <em>(L00-2)</em></summary>
 
 No. Landscape is included in Ubuntu Pro subscriptions. (Managed Landscape, where Canonical runs a dedicated instance for the customer, is a separate conversation with Sales. See Lab 02.)
 </details>
 
 <details>
-<summary>3. What's a virtual machine, in one sentence you could say to a customer?</summary>
+<summary>3. What's a virtual machine, in one sentence you could say to a customer? <em>(L00-3)</em></summary>
 
 A complete computer simulated in software on another computer. It's isolated, so you can create, break and delete it without affecting the real machine.
 </details>

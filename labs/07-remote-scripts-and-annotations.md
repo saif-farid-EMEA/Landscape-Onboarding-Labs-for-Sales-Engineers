@@ -2,6 +2,22 @@
 
 **Time:** 45 minutes · **Web portal** 🖱️ · Scripts are in [`scripts/landscape/`](../scripts/landscape/)
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L07-1 | **Add** a script, **run** it on selected machines and **read** its output in Activities. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoints, Parts A and B · Check yourself Q5 |
+| L07-2 | **Explain** the safeguards around remote script execution. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities), [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q1 |
+| L07-3 | **Create** annotations with a script, **search** by annotation and **distinguish** annotations from tags. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part C · Check yourself Q2 |
+| L07-4 | **Fix** one specific CVE across machines with `pro fix` run through Landscape. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part D · Check yourself Q6 |
+| L07-5 | **Schedule** scripts with script profiles, and **explain** archiving vs. redacting. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part E · Check yourself Q3, Q4 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 Every operations team has a moment like *"we need to check or change X on all 400 machines, now"*. Without Landscape, that means SSH loops, shared root keys and no audit trail. With Landscape, you pick the machines, pick a script and click **Run**. Every run is an **activity**: who ran it, where, when, and what it printed.
@@ -135,28 +151,42 @@ A **script profile** runs a script automatically, triggered by:
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. Name three safeguards around remote script execution.</summary>
+<summary>1. Name three safeguards around remote script execution. <em>(L07-2)</em></summary>
 
 (1) The `ScriptExecution` plugin is off by default on clients. (2) `script_users` restricts which local users scripts can run as. (3) RBAC roles control which admins can run scripts, and on which access groups. Plus, every run is recorded as an activity with its output.
 </details>
 
 <details>
-<summary>2. What's the difference between a tag and an annotation?</summary>
+<summary>2. What's the difference between a tag and an annotation? <em>(L07-3)</em></summary>
 
 A tag is a label an administrator applies in Landscape. An annotation is a key/value pair the machine reports about itself, created by files in `/var/lib/landscape/client/annotations.d/`.
 </details>
 
 <details>
-<summary>3. What are the three script profile triggers?</summary>
+<summary>3. What are the three script profile triggers? <em>(L07-5)</em></summary>
 
 Post enrollment, on a date, and recurring (cron schedule).
 </details>
 
 <details>
-<summary>4. What's the difference between archiving and redacting a script?</summary>
+<summary>4. What's the difference between archiving and redacting a script? <em>(L07-5)</em></summary>
 
 Archiving stops future runs but keeps the script's record and contents. Redacting permanently removes the contents and attachments but keeps a record of who redacted it and when.
+</details>
+
+<details>
+<summary>5. Why does a script activity show "Queued" before it runs? <em>(L07-1)</em></summary>
+
+Landscape doesn't push commands into machines. The activity waits until the client next checks in, then the client collects it, runs it locally and reports back. That's also why it works behind firewalls that only allow outbound HTTPS.
+</details>
+
+<details>
+<summary>6. Your security team wants one CVE fixed on 50 machines and nothing else upgraded. How do you do it in Landscape? <em>(L07-4)</em></summary>
+
+Add a script that runs `pro fix CVE-…` (as root), then run it on those machines. Each machine gets its own activity with the output showing whether the CVE is resolved. The machines need Ubuntu Pro attached.
 </details>
 
 ## 📚 Read more

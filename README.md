@@ -2,11 +2,23 @@
 
 **Learn to give a confident Landscape demo, even if you've never used Linux.**
 
-These hands-on labs are for new Canonical Sales Engineers. By the end you will have:
+These hands-on labs are for new Canonical Sales Engineers who have never used Linux or Landscape.
 
-- **Your own demo estate**: a Landscape server managing a small fleet of Ubuntu machines, running on your laptop.
-- **A clear picture of the concepts that come up on sales calls**: editions, Ubuntu Pro, CVEs/USNs, Livepatch, profiles, compliance (CIS / DISA-STIG), RBAC, airgapped and sovereign deployments.
-- **Practice running a 20-minute demo** with talk tracks, discovery questions and answers to common objections.
+## Learning outcomes
+
+By the end of the course, you will be able to:
+
+| ID | Outcome | You will be able to… |
+|---|---|---|
+| **PO1** | Linux fluency | Use an Ubuntu terminal for basic tasks and explain the Linux concepts that come up on calls: packages and repositories, `sudo`, services, the kernel, CVEs and USNs. |
+| **PO2** | Positioning | Explain what Landscape is, how it works, its three editions and how it's licensed through Ubuntu Pro, and recommend an edition from a customer's requirements. |
+| **PO3** | Build | Deploy a self-hosted Landscape demo environment and enroll machines with both manual and automated registration. |
+| **PO4** | Demonstrate core capabilities | Demonstrate inventory and search, security patching and Livepatch, remote scripts, package and profile policy, CIS/DISA-STIG compliance and RBAC in the web portal, and explain the value of each. |
+| **PO5** | Specialized environments | Explain sovereign and airgapped architectures (including the Sovereign AI story), repository mirroring, and how Landscape covers desktops, WSL, IoT devices and AI hardware. |
+| **PO6** | Sell | Run discovery, deliver a tailored 20-minute demo, recover from demo failures and handle common objections accurately. |
+| **PO7** | Self-sufficiency | Find answers in the official documentation, troubleshoot common problems and keep a demo environment healthy. |
+
+Every lab starts with its own **learning objectives** (e.g. `L06-2`). Each objective names the outcome it supports and how it's checked: a ✅ checkpoint, an exercise, or a tagged *Check yourself* question. The full mapping is in [`reference/learning-objectives.md`](reference/learning-objectives.md).
 
 > [!IMPORTANT]
 > **How these labs are designed**
@@ -33,26 +45,27 @@ These hands-on labs are for new Canonical Sales Engineers. By the end you will h
 
 ## The lab map
 
-| # | Lab | What you'll be able to do | Time |
-|---|---|---|---|
-| 00 | [Start here](labs/00-start-here.md) | Set up accounts and tools, and learn how to read these labs | 30 min |
-| 01 | [Linux survival kit](labs/01-linux-survival-kit.md) | Use a terminal, `sudo`, packages, snaps, and understand what a "kernel" or a "CVE" is | 60 min |
-| 02 | [Landscape: the big picture](labs/02-landscape-big-picture.md) | Explain what Landscape is, the 3 editions, and how licensing works with Ubuntu Pro | 45 min |
-| 03 | [Build your demo server](labs/03-build-your-demo-server.md) | Install a self-hosted Landscape server, understanding every step | 60 min |
-| 04 | [Enroll your fleet](labs/04-enroll-your-fleet.md) | Register machines, accept them in the portal, and use registration keys | 60 min |
-| 05 | [Portal tour: see and organize the estate](labs/05-portal-tour-and-organizing.md) | Give the "single pane of glass" opener: inventory, tags, search, alerts, Ubuntu Pro from the UI | 45 min |
-| 06 | [Security patching, CVEs and Livepatch](labs/06-security-patching-and-cves.md) | Run the #1 demo: find a vulnerable machine and patch it from the browser | 60 min |
-| 07 | [Remote scripts and annotations](labs/07-remote-scripts-and-annotations.md) | Run a script on the whole fleet, read its output, and schedule scripts | 45 min |
-| 08 | [Packages, snaps and profiles](labs/08-packages-snaps-and-profiles.md) | Install or block software fleet-wide, and set maintenance windows | 60 min |
-| 09 | [Compliance: CIS and DISA-STIG with USG](labs/09-compliance-usg-cis-stig.md) | Audit machines against a hardening benchmark and download an audit report | 60 min |
-| 10 | [RBAC and access control](labs/10-rbac-and-access-control.md) | Show least-privilege, multi-team administration | 30 min |
-| 11 | [Sovereign, airgapped and repository mirroring](labs/11-sovereign-airgapped-and-repos.md) | Tell the "Sovereign AI / disconnected" story and explain mirrors and snapshots | 45 min |
-| 12 | [Beyond servers: desktops, WSL, IoT and AI hardware](labs/12-beyond-servers-wsl-iot-ai.md) | Position Landscape for Windows+WSL, Ubuntu Core devices and NVIDIA DGX Spark | 30 min |
-| 13 | [Your first demo](labs/13-your-first-demo.md) | Rehearse a 20-minute demo with discovery questions and objection handling | 60 min |
-| 14 | [Reset and teardown](labs/14-reset-and-teardown.md) | Reset the demo between calls, or delete everything | 15 min |
+| # | Lab | What you'll be able to do | Outcomes | Time |
+|---|---|---|---|---|
+| 00 | [Start here](labs/00-start-here.md) | Set up accounts and tools, and learn how to read these labs | PO1, PO2, PO3 | 30 min |
+| 01 | [Linux survival kit](labs/01-linux-survival-kit.md) | Use a terminal, `sudo`, packages, snaps, and understand what a "kernel" or a "CVE" is | PO1 | 60 min |
+| 02 | [Landscape: the big picture](labs/02-landscape-big-picture.md) | Explain what Landscape is, the 3 editions, and how licensing works with Ubuntu Pro | PO2, PO6 | 45 min |
+| 03 | [Build your demo server](labs/03-build-your-demo-server.md) | Install a self-hosted Landscape server, understanding every step | PO1, PO2, PO3 | 60 min |
+| 04 | [Enroll your fleet](labs/04-enroll-your-fleet.md) | Register machines, accept them in the portal, and use registration keys | PO1, PO2, PO3, PO4, PO6, PO7 | 60 min |
+| 05 | [Portal tour: see and organize the estate](labs/05-portal-tour-and-organizing.md) | Give the "single pane of glass" opener: inventory, tags, search, alerts, Ubuntu Pro from the UI | PO2, PO4, PO6 | 45 min |
+| 06 | [Security patching, CVEs and Livepatch](labs/06-security-patching-and-cves.md) | Run the #1 demo: find a vulnerable machine and patch it from the browser | PO1, PO4, PO6 | 60 min |
+| 07 | [Remote scripts and annotations](labs/07-remote-scripts-and-annotations.md) | Run a script on the whole fleet, read its output, and schedule scripts | PO4, PO6 | 45 min |
+| 08 | [Packages, snaps and profiles](labs/08-packages-snaps-and-profiles.md) | Install or block software fleet-wide, and set maintenance windows | PO4, PO6 | 60 min |
+| 09 | [Compliance: CIS and DISA-STIG with USG](labs/09-compliance-usg-cis-stig.md) | Audit machines against a hardening benchmark and download an audit report | PO1, PO4, PO6 | 60 min |
+| 10 | [RBAC and access control](labs/10-rbac-and-access-control.md) | Show least-privilege, multi-team administration | PO2, PO4 | 30 min |
+| 11 | [Sovereign, airgapped and repository mirroring](labs/11-sovereign-airgapped-and-repos.md) | Tell the "Sovereign AI / disconnected" story and explain mirrors and snapshots | PO5, PO6 | 45 min |
+| 12 | [Beyond servers: desktops, WSL, IoT and AI hardware](labs/12-beyond-servers-wsl-iot-ai.md) | Position Landscape for Windows+WSL, Ubuntu Core devices and NVIDIA DGX Spark | PO4, PO5, PO6 | 30 min |
+| 13 | [Your first demo](labs/13-your-first-demo.md) | Rehearse a 20-minute demo with discovery questions and objection handling | PO4, PO6, PO7 | 60 min |
+| 14 | [Reset and teardown](labs/14-reset-and-teardown.md) | Reset the demo between calls, or delete everything | PO4, PO6, PO7 | 15 min |
 
 ## Reference shelf
 
+- [Learning objectives and coverage](reference/learning-objectives.md): every objective, the outcome it supports, and how it's checked
 - [Glossary](reference/glossary.md): every term used in these labs, in plain English
 - [Linux cheat sheet](reference/linux-cheat-sheet.md): the commands from Lab 01 on one page
 - [Web portal click paths](reference/web-portal-click-paths.md): "where is X in the UI?" for live demos

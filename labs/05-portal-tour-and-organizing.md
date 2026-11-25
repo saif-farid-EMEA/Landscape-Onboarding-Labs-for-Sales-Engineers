@@ -2,6 +2,23 @@
 
 **Time:** 45 minutes · **Everything in this lab happens in the web portal** 🖱️
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L05-1 | **Deliver** a 60-second estate-overview opener from the Overview page. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities), [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q5 |
+| L05-2 | **Search** for instances with query prefixes (`tag:`, `distribution:`, `alert:`…) and **save** a search. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Saved search in Part B · Check yourself Q1 |
+| L05-3 | **Find** any detail about a machine (OS, kernel, hardware, packages) in under 15 seconds. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part C |
+| L05-4 | **Attach** Ubuntu Pro from the web portal and **explain** what that changes on the machines. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities), [PO2](../reference/learning-objectives.md#po2-positioning) | Checkpoint, Part D · Check yourself Q3 |
+| L05-5 | **Organize** machines with tags and **distinguish** tags, access groups and annotations. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Checkpoint, Part E · Check yourself Q2 |
+| L05-6 | **Configure** alert subscriptions and **explain** the main alerts. | [PO4](../reference/learning-objectives.md#po4-demonstrate-core-capabilities) | Offline test in Part F · Check yourself Q4 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 This is your **demo opener**: the "single pane of glass" moment. Before you show any action, show that Landscape *knows* the estate: what's running where, what's vulnerable, what needs a reboot and what isn't licensed. Many customers can't answer *"how many Ubuntu machines do you have, and on which releases?"* in under a day. You'll answer it in 10 seconds.
@@ -160,28 +177,36 @@ multipass start db-01
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. A customer asks: "Show me every 22.04 machine in production that still needs security fixes." What do you type?</summary>
+<summary>1. A customer asks: "Show me every 22.04 machine in production that still needs security fixes." What do you type? <em>(L05-2)</em></summary>
 
 `distribution:jammy tag:production alert:security-upgrades` (or `distribution:22.04 …`). Then save it as a saved search.
 </details>
 
 <details>
-<summary>2. How many access groups can a machine be in? How many tags?</summary>
+<summary>2. How many access groups can a machine be in? How many tags? <em>(L05-5)</em></summary>
 
 Exactly one access group; any number of tags.
 </details>
 
 <details>
-<summary>3. Why did the number of available security updates go up after attaching Ubuntu Pro?</summary>
+<summary>3. Why did the number of available security updates go up after attaching Ubuntu Pro? <em>(L05-4)</em></summary>
 
 Attaching Pro enabled ESM Infra and ESM Apps, so the machines can now see (and get) extended security updates, including fixes for packages in universe.
 </details>
 
 <details>
-<summary>4. After how long does Landscape consider a machine offline?</summary>
+<summary>4. After how long does Landscape consider a machine offline? <em>(L05-6)</em></summary>
 
 When it hasn't contacted Landscape within the last five minutes.
+</details>
+
+<details>
+<summary>5. On the Overview page, which number do you point at first in a demo, and why? <em>(L05-1)</em></summary>
+
+The number of instances with outstanding **security** upgrades. It's the clearest measure of the customer's current exposure, and it leads straight into the patching demo.
 </details>
 
 ## 📚 Read more

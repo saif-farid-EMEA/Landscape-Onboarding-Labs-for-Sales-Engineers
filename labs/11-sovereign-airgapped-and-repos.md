@@ -2,6 +2,23 @@
 
 **Time:** 45 minutes · **Mostly concepts and whiteboarding, plus a guided tour of the Repositories UI**
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L11-1 | **Articulate** the sovereignty and Sovereign AI story, and how each edition answers it. | [PO5](../reference/learning-objectives.md#po5-specialized-environments), [PO6](../reference/learning-objectives.md#po6-sell) | Check yourself Q6 |
+| L11-2 | **List** the external endpoints a self-hosted server uses and **explain** what breaks without them. | [PO5](../reference/learning-objectives.md#po5-specialized-environments) | Check yourself Q5 |
+| L11-3 | **Draw** the three airgap layouts, **compare** restricted and fully disconnected airgaps, and **state** the main limitation honestly. | [PO5](../reference/learning-objectives.md#po5-specialized-environments) | Checkpoint, Part C · Check yourself Q1 |
+| L11-4 | **Explain** the repository-mirroring concepts: mirrors, filtered and signature-preserving mirrors, snapshots, local repositories, publications, targets and profiles. | [PO5](../reference/learning-objectives.md#po5-specialized-environments) | Check yourself Q2, Q3, Q4 |
+| L11-5 | **Navigate** the Repositories pages and **describe** each field of the mirror form. | [PO5](../reference/learning-objectives.md#po5-specialized-environments) | Checkpoint, Part E |
+| L11-6 | **Use** disk-space estimates in a sizing conversation. | [PO5](../reference/learning-objectives.md#po5-specialized-environments) | Check yourself Q7 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 **Sovereignty is one of the hottest topics in enterprise IT right now.** Governments, defence, critical infrastructure, banks, and anyone building **Sovereign AI** (AI infrastructure, models and data kept inside national or organizational boundaries) ask the same questions:
@@ -157,34 +174,48 @@ Production sizing guidance: **2 TB+** of additional storage if mirroring reposit
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. A defence customer has a fully disconnected network. Which edition, and what's the main operational challenge?</summary>
+<summary>1. A defence customer has a fully disconnected network. Which edition, and what's the main operational challenge? <em>(L11-3)</em></summary>
 
 Self-hosted Landscape, installed offline, with repository mirrors (often the two-server pattern). The main challenge is moving repository content in on physical media: there's currently no diff, so the whole repository is transferred each time. Filtered mirrors help, and Canonical professional services can assist.
 </details>
 
 <details>
-<summary>2. What does a snapshot mirror give the customer?</summary>
+<summary>2. What does a snapshot mirror give the customer? <em>(L11-4)</em></summary>
 
 The Ubuntu archive as it was at a specific point in time. That gives reproducible, controlled rollouts: test and production get exactly the same package versions.
 </details>
 
 <details>
-<summary>3. Can Landscape mirror snaps?</summary>
+<summary>3. Can Landscape mirror snaps? <em>(L11-4)</em></summary>
 
 No. Use Canonical's Enterprise Store for snaps in restricted environments.
 </details>
 
 <details>
-<summary>4. Which three publication target types exist?</summary>
+<summary>4. Which three publication target types exist? <em>(L11-4)</em></summary>
 
 Filesystem (served by your own web server), S3 or S3-compatible object storage, and OpenStack Swift.
 </details>
 
 <details>
-<summary>5. What breaks if the self-hosted server can't reach usn.ubuntu.com?</summary>
+<summary>5. What breaks if the self-hosted server can't reach usn.ubuntu.com? <em>(L11-2)</em></summary>
 
 Landscape can't distinguish security updates from regular updates. (In airgapped designs this is handled as part of the offline architecture; involve professional services.)
+</details>
+
+<details>
+<summary>6. In one or two sentences, connect Sovereign AI to Landscape. <em>(L11-1)</em></summary>
+
+Sovereign AI means keeping the whole AI stack, not just the model, under your own control and jurisdiction. Self-hosted Landscape keeps OS patching, package supply, audit data and identity inside your boundary, even with no Internet, including for AI systems such as DGX Spark.
+</details>
+
+<details>
+<summary>7. A customer wants to mirror the full Ubuntu 24.04 archive (amd64) into an airgap. Roughly how much disk, and how could they reduce it? <em>(L11-6)</em></summary>
+
+About 625 GB for Noble amd64 (docs estimate, April 2026); production guidance is 2 TB or more for mirroring. They can reduce it by skipping components such as `restricted` or by using filtered mirrors.
 </details>
 
 ## 📚 Read more

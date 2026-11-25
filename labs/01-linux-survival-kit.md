@@ -2,6 +2,23 @@
 
 **Time:** 60 minutes · **Prerequisite:** [Lab 00](00-start-here.md) (Multipass installed)
 
+## 🎓 Learning objectives
+
+By the end of this lab, you will be able to:
+
+| ID | Objective | Supports | Checked by |
+|---|---|---|---|
+| L01-1 | **Open** a shell in an Ubuntu VM, **read** the prompt and **navigate** the filesystem with `pwd`, `ls`, `cd` and `cat`. | [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Checkpoints, Parts A and B · Check yourself Q4 |
+| L01-2 | **Edit** a text file with `nano` and **run** commands as root with `sudo`, and **explain** why broad `sudo` access is a security risk. | [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Checkpoint, Part C · Check yourself Q5 |
+| L01-3 | **Explain** packages and repositories (including *main* vs. *universe*) and the difference between `apt update` and `apt upgrade`. | [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Check yourself Q1, Q6 |
+| L01-4 | **Explain** what a CVE and a USN are and how they relate. | [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Check yourself Q2 |
+| L01-5 | **Explain** why kernel updates usually need a reboot and what Livepatch changes. | [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Check yourself Q3 |
+| L01-6 | **Recognize** snaps and services, and **check** whether a service is running. | [PO1](../reference/learning-objectives.md#po1-linux-fluency) | Check yourself Q7 |
+
+*Supports* links to the course-level [learning outcomes](../README.md#learning-outcomes). The full mapping is in [`reference/learning-objectives.md`](../reference/learning-objectives.md).
+
+---
+
 ## 🎯 Why this matters on a call
 
 You don't need to be a Linux administrator to sell Landscape, but your audience usually *is*. If you know what `apt`, a kernel, a CVE or `sudo` means, you'll understand their pain, follow their questions, and avoid sounding scripted. This lab covers only what you need for that, using a throwaway VM called `sandbox`.
@@ -228,28 +245,48 @@ multipass delete sandbox --purge
 
 ## ❓ Check yourself
 
+Each question is tagged with the learning objective it checks.
+
 <details>
-<summary>1. What's the difference between <code>apt update</code> and <code>apt upgrade</code>?</summary>
+<summary>1. What's the difference between <code>apt update</code> and <code>apt upgrade</code>? <em>(L01-3)</em></summary>
 
 `update` refreshes the list of available versions. `upgrade` installs the newer versions.
 </details>
 
 <details>
-<summary>2. A customer says "we're tracking CVE-2024-6387". What is that, and how does Ubuntu publish the fix?</summary>
+<summary>2. A customer says "we're tracking CVE-2024-6387". What is that, and how does Ubuntu publish the fix? <em>(L01-4)</em></summary>
 
 It's the public ID of a specific vulnerability (the OpenSSH "regreSSHion" flaw). Canonical publishes fixed packages and announces them in an Ubuntu Security Notice (USN).
 </details>
 
 <details>
-<summary>3. Why do kernel updates usually cause downtime, and what reduces that?</summary>
+<summary>3. Why do kernel updates usually cause downtime, and what reduces that? <em>(L01-5)</em></summary>
 
 The new kernel normally loads only after a reboot. Livepatch (Ubuntu Pro) applies critical and high kernel fixes to the running kernel without a reboot.
 </details>
 
 <details>
-<summary>4. What does the <code>$</code> at the end of the prompt tell you?</summary>
+<summary>4. What does the <code>$</code> at the end of the prompt tell you? <em>(L01-1)</em></summary>
 
 You're a normal user, not root. A `#` means you're root.
+</details>
+
+<details>
+<summary>5. Why is giving many people <code>sudo</code> on production servers risky, and how does Landscape reduce the need for it? <em>(L01-2)</em></summary>
+
+`sudo` means full root power: any mistake or compromised account can change anything. With Landscape, people act through roles in the web portal (patching, scripts on specific machines) without being given SSH or `sudo` on the machines, and every action is recorded.
+</details>
+
+<details>
+<summary>6. Which part of the Ubuntu archive gets Canonical security fixes only with Ubuntu Pro, and why is that a good discovery question? <em>(L01-3)</em></summary>
+
+*universe*. Without Ubuntu Pro (ESM Apps) its packages only get community security support. Many customers run a lot of software from universe without realizing it isn't covered.
+</details>
+
+<details>
+<summary>7. From Linux's point of view, what is <code>landscape-client</code>, and how would you check that it's running? <em>(L01-6)</em></summary>
+
+It's a service (a background program). `systemctl status landscape-client` shows whether it's `active (running)`.
 </details>
 
 ## 📚 Read more
