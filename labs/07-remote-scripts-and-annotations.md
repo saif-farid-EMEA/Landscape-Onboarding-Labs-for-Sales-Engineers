@@ -59,6 +59,10 @@ multipass exec web-01 -- cat /home/ubuntu/hello-from-landscape.txt
 🧠 **Linux moment: why "Queued" first?**
 Landscape doesn't push commands into machines. The client **checks in**, finds the queued activity, runs it locally and reports back. That's why there's a short delay, and why it works for machines behind NAT or firewalls that only allow outbound HTTPS.
 
+![Activity lifecycle: the admin asks, the activity is queued, the client checks in and collects it, runs it locally, reports the result, and Landscape records Succeeded or Failed with who, when and output.](../diagrams/activity-lifecycle.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/activity-lifecycle.png) · [SVG](../diagrams/activity-lifecycle.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
+
 ---
 
 ## Part B: A safe, read-only fleet report (great for live demos)

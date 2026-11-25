@@ -110,21 +110,9 @@ Ask these early. The answers decide the architecture, and whether you need speci
 
 ### Server layouts
 
-```
-1) Single server inside          2) Server outside,            3) Two servers (maximum isolation)
-   (controlled egress)              clients inside
+![Three airgap layouts. 1: a single Landscape server inside the secure zone with a controlled path to the Internet. 2: the server outside, with only the clients in the secure zone, connecting out to it. 3: two servers, where an outer server mirrors from the Internet and an inner server inside the secure zone receives updates by a controlled link or approved media.](../diagrams/airgap-layouts.svg)
 
- Internet                         Internet                       Internet
-    │ (controlled)                   │                              │
- ┌──┴─────────┐                 ┌────┴───────┐                 ┌────┴─────┐  outer Landscape
- │ Landscape  │                 │ Landscape  │                 │  server  │  mirrors upstream
- │  server    │                 │  server    │                 └────┬─────┘
- └──┬─────────┘                 └────┬───────┘            ═══ airgap ═╪═══ controlled link or media
- ═══╪═══ airgap ═══          ════════╪═══ airgap ═══           ┌────┴─────┐  inner Landscape
-    │                                │                         │  server  │  serves clients
-  clients                          clients                     └────┬─────┘
-                                                                  clients
-```
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/airgap-layouts.png) · [SVG](../diagrams/airgap-layouts.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
 
 ### Tiered mirrors (multi-region and multi-enclave)
 
@@ -134,6 +122,10 @@ For several isolated networks or regions, Landscape servers can be **layered**. 
 - **Network-isolated:** a **Tier 1 global** server filters packages from public repositories; **Tier 2** servers (one per network or region) mirror from Tier 1 and serve their local clients. Each tier signs with its own key, and the next tier trusts it.
 
 Benefits to name: **regional bandwidth and cost savings**, **one place to decide what's approved** (Tier 1), and **isolation between networks**.
+
+![Tiered mirrors: a Tier 1 global server pulls from upstream, filters and signs approved packages, and feeds Tier 2 servers in three isolated networks (EU region, US region, classified) over a controlled link or approved media; each Tier 2 server serves its local clients.](../diagrams/tiered-mirrors.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/tiered-mirrors.png) · [SVG](../diagrams/tiered-mirrors.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
 
 > [!NOTE]
 > The docs' detailed tiered-mirror steps are written for Landscape 25.10 and earlier; the concepts apply to all versions. For a 26.04+ design, involve the product team or professional services.
@@ -202,18 +194,9 @@ Disk estimates from the docs (April 2026: main+restricted+universe+multiverse; r
 
 You'll turn your demo estate into the **"single server inside, controlled egress"** layout:
 
-```
-             Internet
-                │  (controlled: only the Landscape server can sync)
-        ┌───────┴──────────┐
-        │ landscape-server │  Landscape + Debarchive + signed mirror (port 8000)
-        └───────┬──────────┘
-  ══════════════╪═══════════════ host firewall (ufw) on the client ═════
-                │  ONLY the Landscape server is reachable
-          ┌─────┴─────┐
-          │ airgap-01 │  no Internet · registered with Landscape
-          └───────────┘  installs only approved, signed packages
-```
+![What you build in Lab 11: landscape-server runs Landscape, Debarchive and a signed mirror on port 8000, and syncs from the Ubuntu archive through controlled egress. A ufw firewall isolates airgap-01: only management traffic (HTTPS) and approved packages (port 8000) to the server are allowed; everything else is blocked. Landscape Client reaches airgap-01 offline: a staging VM builds a bundle with SHA-256 checksums, which your laptop carries across like a USB stick.](../diagrams/lab11-airgap-build.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/lab11-airgap-build.png) · [SVG](../diagrams/lab11-airgap-build.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
 
 > [!NOTE]
 > **Resources.** You'll add two small VMs (`airgap-01`, and a temporary `staging` VM). If your laptop has 16 GB, stop the VMs you don't need for this lab first:
@@ -634,6 +617,12 @@ Open both in a text editor (TextEdit, Notepad, Text Editor).
 ## Part I: Build the approved catalogue (filtered, signed mirror)
 
 **The story:** *"The security board has approved exactly two packages for the secure zone: `hello` and `sl`."* They're harmless stand-ins for "your approved applications". Everything else must stay out.
+
+Here's how the pieces you're about to create fit together. Keep this picture in mind for each step:
+
+![Repository mirroring pipeline in Landscape 26.04+: Upstream (Ubuntu archive, snapshot, Ubuntu Pro ESM, third-party) is synced into a Mirror (optionally filtered), published as a point-in-time Publication signed with your private GPG key (local repositories of your own .debs can be published too), written to a Target (filesystem, S3 or MinIO, OpenStack Swift), applied by a Repository profile carrying your public key to tagged machines, which can then install only what you approved.](../diagrams/mirroring-pipeline.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/mirroring-pipeline.png) · [SVG](../diagrams/mirroring-pipeline.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
 
 ### I1. Check your CPU architecture
 

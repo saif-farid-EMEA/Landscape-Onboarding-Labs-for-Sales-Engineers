@@ -34,27 +34,17 @@ It's for **sysadmins, security teams, IT managers and compliance officers**, and
 
 ## 2. How it works: client and server
 
-```
-  Admins (browser / REST API)
-              │ HTTPS
-              ▼
- ┌────────────────────────┐          Canonical data sources
- │    Landscape Server     │ ───────► Ubuntu Security Notices (USNs),
- │  web portal · API ·     │          Ubuntu archive, Ubuntu Pro,
- │  message system         │          Livepatch
- │  (PostgreSQL, RabbitMQ) │
- └────────────────────────┘
-      ▲        ▲        ▲      Each client "phones home" over HTTPS:
-      │        │        │      it reports inventory and status, then
- ┌────┴──┐ ┌───┴───┐ ┌──┴────┐ picks up queued work ("activities")
- │Client │ │Client │ │Client │
- └───────┘ └───────┘ └───────┘
-  servers   desktops   IoT/WSL/cloud
-```
+![Architecture diagram: admins use the web portal or REST API over HTTPS to reach Landscape Server (web portal, REST API, message system; running on PostgreSQL, RabbitMQ and HAProxy or Apache), which pulls data from Canonical: Ubuntu Security Notices, the Ubuntu archive, Ubuntu Pro and Livepatch. Servers, desktops, cloud instances, WSL, IoT devices and AI systems each run Landscape Client and connect outbound over HTTPS; no inbound SSH is needed.](../diagrams/landscape-architecture.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/landscape-architecture.png) · [SVG](../diagrams/landscape-architecture.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
 
 - **Landscape Server** is the central brain. You use it through the **web portal** or the **API**. Behind the scenes it uses **PostgreSQL** (database), **RabbitMQ** (task queue) and usually **HAProxy or Apache** (HTTPS front door).
 - **Landscape Client** is a small agent installed on each managed machine. It sends information (hardware, packages, security status) to the server and carries out the actions you request.
 - **Activities:** when you click "upgrade" in the portal, Landscape doesn't reach into the machine. It queues an *activity*. The next time the client checks in, it collects the activity, runs it and reports back "Succeeded" or "Failed". You'll watch this happen in Lab 04.
+
+![Activity lifecycle in six steps: 1 an admin asks in the portal or API; 2 the activity is queued or scheduled on the server; 3 the client checks in over outbound HTTPS and collects it; 4 it runs locally; 5 the result is reported; 6 it is recorded as Succeeded or Failed with who, when and output. States: Queued, Scheduled, Waiting, Blocked, In progress, Succeeded, Failed, Canceled.](../diagrams/activity-lifecycle.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/activity-lifecycle.png) · [SVG](../diagrams/activity-lifecycle.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
 
 🎤 **Say it on the call:** *"Clients connect **out** to the server over HTTPS. You don't need to open inbound SSH to every machine, and every action is recorded as an activity: who asked for it, when, and what happened."*
 
@@ -71,6 +61,10 @@ It's for **sysadmins, security teams, IT managers and compliance officers**, and
 | **Repository mirroring** (self-hosted) | "We're airgapped / we need to control exactly which versions get in." | 11 |
 
 ## 4. The three editions
+
+![Comparison of the three editions. Landscape SaaS: operated by Canonical in its cloud, multi-tenant, no airgap, no repository mirroring, no bring-your-own SSO; best to start today. Managed Landscape: operated by Canonical under an SLA, public cloud or on-premises, single-tenant, mirroring and SSO, airgap to be confirmed; best for private and dedicated without running it. Self-hosted: operated by your team anywhere, single-tenant, airgap, mirroring and SSO; best for airgapped, regulated, full control.](../diagrams/landscape-editions.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/landscape-editions.png) · [SVG](../diagrams/landscape-editions.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
 
 | | **Landscape SaaS** | **Managed Landscape** | **Self-hosted Landscape** |
 |---|---|---|---|

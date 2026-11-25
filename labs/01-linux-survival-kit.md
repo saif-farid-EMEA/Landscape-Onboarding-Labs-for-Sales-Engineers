@@ -51,13 +51,9 @@ multipass shell sandbox
 
 🧠 **Linux moment: reading the prompt**
 
-```
-ubuntu@sandbox:~$
-  │      │    │ └─ $ = you're a normal user (# would mean you're "root", the all-powerful admin)
-  │      │    └─── ~ = you're in your home folder
-  │      └──────── the machine's name (its "hostname")
-  └─────────────── your username
-```
+![Annotated terminal prompt ubuntu@sandbox:~$. "ubuntu" is your username; "sandbox" is the machine name, so always check it; "~" is where you are, your home folder; "$" means a normal user, while "#" would mean root.](../diagrams/reading-the-prompt.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/reading-the-prompt.png) · [SVG](../diagrams/reading-the-prompt.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
 
 Always check the prompt before typing. *"Which machine am I on?"* is the #1 question Linux admins ask themselves.
 

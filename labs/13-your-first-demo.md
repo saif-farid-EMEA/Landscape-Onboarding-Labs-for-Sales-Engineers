@@ -111,7 +111,8 @@ Ask these (or find out from the account team) **before** you demo. The answers t
 
 1. Run the 20-minute demo **out loud**, alone, with a timer. Record it.
 2. Watch it back and score yourself with the rubric below.
-3. Run it again for a colleague or your manager, who plays a **skeptical CISO**. Ask them to use at least three objections from [Talk tracks and objections](../reference/talk-tracks-and-objections.md).
+3. Build **one tailored slide** for an imaginary customer, starting from a diagram in [`diagrams/`](../diagrams/README.md) and following its design rules (message title, meaningful colour, their names on the boxes). Use it in your next run-through.
+4. Run it again for a colleague or your manager, who plays a **skeptical CISO**. Ask them to use at least three objections from [Talk tracks and objections](../reference/talk-tracks-and-objections.md).
 
 **Self-assessment rubric** (score 1–3 each)
 

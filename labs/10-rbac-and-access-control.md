@@ -36,13 +36,11 @@ An access group is a **container for machines** (and also for profiles and scrip
 
 You'll build this:
 
-```
-global
-├── servers
-│   ├── web
-│   └── database
-└── legacy
-```
+![Access-group tree: global contains servers and legacy; servers contains web and database. web-01, db-01 and legacy-01 sit in web, database and legacy. The Security-Auditors role (view only) is attached to global, so it covers everything; the DB-Operators role (patch and run scripts) is attached only to database.](../diagrams/access-groups-and-roles.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/access-groups-and-roles.png) · [SVG](../diagrams/access-groups-and-roles.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
+
+You'll build the tree in Parts A and B, and attach the two roles in Part C.
 
 1. **Org. settings → Access groups → Add access group**.
 2. Create `servers` with parent **global**.

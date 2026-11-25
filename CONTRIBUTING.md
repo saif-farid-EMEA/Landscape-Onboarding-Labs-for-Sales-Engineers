@@ -11,6 +11,7 @@ These labs only stay useful if they match the current product. If you spot a ren
 5. **Accuracy over hype.** Buzzwords are welcome (Sovereign AI, Zero Trust, supply-chain security…) when they're *true* of Landscape. Never claim a feature, certification or integration that the official docs don't support. When unsure, write "check with the product team".
 6. **Editions matter.** If a feature is self-hosted only or needs a minimum version, say so.
 7. **Objectives first.** Every lab opens with a *Learning objectives* table. Each objective starts with an observable verb (explain, configure, demonstrate…), names the course outcome it supports (PO1–PO7, see the README), and says how it's checked: a ✅ checkpoint, an exercise, or a *Check yourself* question tagged with the objective ID. Don't add content that serves no objective, and don't add an objective that nothing checks. Update [`reference/learning-objectives.md`](reference/learning-objectives.md) in the same PR.
+8. **Real diagrams, not ASCII art.** Add diagrams as SVG plus a 2× PNG in `diagrams/`, following the [diagram style guide](diagrams/README.md), with meaningful alt text in the lab.
 
 ## Lab template
 

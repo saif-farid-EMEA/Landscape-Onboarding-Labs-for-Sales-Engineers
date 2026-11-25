@@ -29,6 +29,10 @@ Lab 06 was *reactive*: find a problem and fix it. This lab is about **policy**: 
 
 🧠 **Key idea: profiles + tags = policy at scale.** A profile is attached to an **access group** and, optionally, to **tags**. Any machine with a matching tag gets the profile **automatically**, including machines that join next year.
 
+![Profiles plus tags equals policy: three profiles (nightly-security upgrade profile, sunday-reboots reboot profile, production-baseline package profile) are associated with the tag production. web-01, db-01 and a future new-server-07 carry that tag and inherit all three profiles; legacy-01, tagged staging, is not affected.](../diagrams/profiles-and-tags.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/profiles-and-tags.png) · [SVG](../diagrams/profiles-and-tags.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
+
 ---
 
 ## Part A: Install and hold a package on one machine

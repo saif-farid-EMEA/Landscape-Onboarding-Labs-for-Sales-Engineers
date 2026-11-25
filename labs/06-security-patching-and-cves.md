@@ -159,6 +159,10 @@ Doing it by hand is good for the demo. Customers want it **automatic**: an **upg
 
 ## The 5-minute security demo (practice this out loud)
 
+![The security demo in five steps: Discover (Overview security upgrades count), Understand (Security issues, USN, CVEs), Fix (select and Upgrade, or one CVE with pro fix), Verify (Activities succeeded, Kernel tab Livepatch status), Automate (upgrade profile, security-only, nightly). Powered by Ubuntu Security Notices; Livepatch applies high and critical kernel fixes without a reboot.](../diagrams/security-demo-flow.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/security-demo-flow.png) · [SVG](../diagrams/security-demo-flow.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
+
 | Step | Click path | Say |
 |---|---|---|
 | 1. Discover | Overview → **Security** upgrades count | "Here's our exposure right now." |

@@ -68,6 +68,7 @@ Every lab starts with its own **learning objectives** (e.g. `L06-2`). Each objec
 
 ## Reference shelf
 
+- [Diagrams and slide style guide](diagrams/README.md): every diagram as an editable SVG and slide-ready PNG, plus the design rules to build your own customer slides
 - [Learning objectives and coverage](reference/learning-objectives.md): every objective, the outcome it supports, and how it's checked
 - [Glossary](reference/glossary.md): every term used in these labs, in plain English
 - [Linux cheat sheet](reference/linux-cheat-sheet.md): the commands from Lab 01 on one page

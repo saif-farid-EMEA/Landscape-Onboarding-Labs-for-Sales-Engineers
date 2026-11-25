@@ -106,17 +106,9 @@ Check your RAM:
 
 ## 5. Your demo estate (what you'll build)
 
-```
-             Your laptop (the "host")
- ┌───────────────────────────────────────────────────────┐
- │  Web browser ──https──►  landscape-server (Ubuntu 24.04)│
- │                             ▲        ▲        ▲          │
- │                     reports │        │        │          │
- │                  ┌──────────┘        │        └────────┐ │
- │              web-01             db-01            legacy-01│
- │           (Ubuntu 24.04)    (Ubuntu 24.04)    (Ubuntu 22.04)│
- └───────────────────────────────────────────────────────┘
-```
+![Diagram of the demo estate: on your laptop, Multipass runs landscape-server (Ubuntu 24.04, built in Lab 03), which your browser reaches over HTTPS. web-01, db-01 (Ubuntu 24.04) and legacy-01 (Ubuntu 22.04) register with it in Lab 04, tagged production or staging. In Lab 11, airgap-01 sits in an isolated zone whose only allowed destination is the server.](../diagrams/demo-estate.svg)
+
+<sub>🖼️ Reuse it in your slides: [PNG](../diagrams/png/demo-estate.png) · [SVG](../diagrams/demo-estate.svg) · [how these diagrams are designed](../diagrams/README.md)</sub>
 
 - **landscape-server**: the Landscape Server you'll install in Lab 03.
 - **web-01, db-01**: modern machines that pretend to be a web server and a database server.
